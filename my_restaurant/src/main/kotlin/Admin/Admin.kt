@@ -9,10 +9,10 @@ data class Admin(
         @jakarta.persistence.Id @Id @GeneratedValue(strategy = GenerationType.AUTO)
         val id: Long = 0,
 
-        val name: String = "",
+        var name: String = "",
 
         @Column(name = "password_hash")
-        val passwordHash: String = "",
+        var passwordHash: String = "",
 
-        val email: String = ""
+        var email: String = ""
 )
