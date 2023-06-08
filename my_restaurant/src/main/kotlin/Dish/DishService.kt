@@ -1,0 +1,4 @@
+package Dish
+
+class DishService {
+}

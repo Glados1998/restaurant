@@ -1,0 +1,4 @@
+package Admin
+
+class AdminService {
+}

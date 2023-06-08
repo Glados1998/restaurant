@@ -1,0 +1,4 @@
+package Restaurant
+
+class RestaurantController {
+}

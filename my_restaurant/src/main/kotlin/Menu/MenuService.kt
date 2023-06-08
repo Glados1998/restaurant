@@ -1,0 +1,4 @@
+package Menu
+
+class MenuService {
+}
