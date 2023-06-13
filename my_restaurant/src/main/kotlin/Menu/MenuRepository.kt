@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository
 
 
 @Repository
-public interface MenuRepository : JpaRepository<Menu, Long> {
+interface MenuRepository : JpaRepository<Menu, Long> {
 
 }

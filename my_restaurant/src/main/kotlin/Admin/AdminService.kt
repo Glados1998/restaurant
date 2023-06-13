@@ -2,7 +2,7 @@ import org.springframework.stereotype.Service
 
 @Service
 class AdminService(private val adminRepository: AdminRepository) {
-    fun findAll(): List<Admin> = adminRepository.findAll()
+    fun findAll(): MutableIterable<Admin> = adminRepository.findAll()
 
     fun save(admin: Admin) = adminRepository.save(admin)
 

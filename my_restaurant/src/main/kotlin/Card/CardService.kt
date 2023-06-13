@@ -1,4 +1,3 @@
-package Card
 
 class CardService {
 }

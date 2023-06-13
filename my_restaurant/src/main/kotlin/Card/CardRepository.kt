@@ -1,10 +1,9 @@
-package Card
-
+import Card.Card
 import org.springframework.stereotype.Repository
 import org.springframework.data.jpa.repository.JpaRepository
 
 
 @Repository
-public interface CardRepository : JpaRepository<Card, Long> {
+interface CardRepository : JpaRepository<Card, Long> {
 
 }

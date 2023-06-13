@@ -6,13 +6,16 @@ import org.springframework.data.annotation.Id
 
 @Entity
 data class Admin(
-        @jakarta.persistence.Id @Id @GeneratedValue(strategy = GenerationType.AUTO)
-        val id: Long = 0,
 
-        var name: String = "",
+    @jakarta.persistence.Id
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    val id: Long = 0,
 
-        @Column(name = "password_hash")
-        var passwordHash: String = "",
+    var name: String = "",
 
-        var email: String = ""
+    @Column(name = "password_hash")
+    var passwordHash: String = "",
+
+    var email: String = ""
 )

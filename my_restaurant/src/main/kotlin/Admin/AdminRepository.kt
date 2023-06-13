@@ -1,9 +1,7 @@
-
+import org.springframework.data.repository.CrudRepository
 import org.springframework.stereotype.Repository
-import org.springframework.data.jpa.repository.JpaRepository
-
 
 @Repository
-public interface AdminRepository : JpaRepository<Admin, Long> {
+interface AdminRepository : CrudRepository<Admin, Long> {
 
 }

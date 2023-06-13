@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository
 
 
 @Repository
-public interface RestaurantRepository : JpaRepository<Restaurant, Long> {
+interface RestaurantRepository : JpaRepository<Restaurant, Long> {
 
 }
