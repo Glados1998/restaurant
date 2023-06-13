@@ -14,9 +14,8 @@ class MenuService(private val menuRepository: MenuRepository) {
     fun deleteById(id: Long) = menuRepository.deleteById(id)
 
     fun edit (id: Long, menu: Menu): Menu {
-        val adminToEdit = findById(id)
-        adminToEdit.name = menu.name
-        adminToEdit.password = menu.password
-        return save(adminToEdit)
+        val menuToEdit = findById(id)
+        menuToEdit.name = menu.name
+        return save(menuToEdit)
     }
 }

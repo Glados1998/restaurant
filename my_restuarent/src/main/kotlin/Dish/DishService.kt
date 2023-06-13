@@ -14,9 +14,11 @@ class DishService(private val dishRepository: DishRepository) {
     fun deleteById(id: Long) = dishRepository.deleteById(id)
 
     fun edit (id: Long, dish: Dish): Dish {
-        val adminToEdit = findById(id)
-        adminToEdit.name = dish.name
-        adminToEdit.password = dish.password
-        return save(adminToEdit)
+        val dishToEdit = findById(id)
+        dishToEdit.name = dish.name
+        dishToEdit.price= dish.price
+        dishToEdit.description= dish.description
+        dishToEdit.image= dish.image
+        return save(dishToEdit)
     }
 }

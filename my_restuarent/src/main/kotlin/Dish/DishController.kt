@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/admins")
-class DishController(private val dishService: DishService) {
+class AdminController(private val dishService: DishService) {
 
     @GetMapping
     fun findAll(): ResponseEntity<Iterable<Dish>> {

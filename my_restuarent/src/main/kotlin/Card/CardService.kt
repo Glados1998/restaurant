@@ -14,9 +14,8 @@ class CardService(private val cardRepository: CardRepository) {
     fun deleteById(id: Long) = cardRepository.deleteById(id)
 
     fun edit (id: Long, card: Card): Card {
-        val adminToEdit = findById(id)
-        adminToEdit.name = card.name
-        adminToEdit.password = card.password
-        return save(adminToEdit)
+        val cardToEdit = findById(id)
+        cardToEdit.name = card.name
+        return save(cardToEdit)
     }
 }
