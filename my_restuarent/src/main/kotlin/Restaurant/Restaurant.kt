@@ -1,4 +1,4 @@
-package Restauran
+package Restaurant
 
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
@@ -11,6 +11,14 @@ data class Restaurant (
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     val id: Long = 0,
+
     var name: String = "",
-    var password: String = "",
+
+    var url: String = "",
+
+    var colorChoice: String = "",
+
+    var image: String = "",
+
+    var address: String = ""
 )

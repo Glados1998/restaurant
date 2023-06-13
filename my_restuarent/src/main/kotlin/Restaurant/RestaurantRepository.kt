@@ -1,4 +1,4 @@
-package Restauran
+package Restaurant
 
 import org.springframework.stereotype.Repository
 
