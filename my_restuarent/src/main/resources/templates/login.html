@@ -3,11 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="/styles/style.css">
 </head>
 <body>
 <div th:include="fragments/navbar::navbar"></div>
 <main>
-    login
+    <div class="login">
+        <div class="login_header">
+            <h6>Login into restaurant</h6>
+            <p>Only for admin</p>
+        </div>
+    </div>
+    <form th:action="@{/restaurant/login}" method="post" class="login_form">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name"><br>
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password"><br>
+        <input type="submit" value="Submit">
+    </form>
 </main>
 <div th:include="fragments/footer::footer"></div>
 </body>

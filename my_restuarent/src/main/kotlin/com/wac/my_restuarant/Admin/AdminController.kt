@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("/admins")
 class AdminController(private val adminService: AdminService) {
 
-    @GetMapping
+    @GetMapping("/all")
     fun findAll(): ResponseEntity<Iterable<Admin>> {
         return ResponseEntity.ok(adminService.findAll())
     }
