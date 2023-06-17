@@ -15,11 +15,6 @@ class RestaurantController(private val restaurantService: RestaurantService) {
         return "index" // the name of the Thymeleaf template
     }
 
-    @GetMapping("/about")
-    fun about(): String {
-        return "about" // the name of the Thymeleaf template
-    }
-
     @GetMapping("/card/{id}")
     fun card(@PathVariable id: Long, model: Model): String {
         val restaurant = restaurantService.findById(id)
@@ -36,9 +31,29 @@ class RestaurantController(private val restaurantService: RestaurantService) {
         return "contact" // the name of the Thymeleaf template
     }
 
-    @GetMapping("/login")
+    @GetMapping("/login-page")
     fun login(): String {
         return "login" // the name of the Thymeleaf template
+    }
+
+    @GetMapping("/restaurant-dashboard")
+    fun restaurantDashboard(): String {
+        return "admin/restaurant-dashboard"
+    }
+
+    @PostMapping("/login")
+    fun login(
+        @RequestParam("name") name: String,
+        @RequestParam("password") password: String,
+        model: Model
+    ): String {
+        val isValidAdmin = restaurantService.authenticateAdmin(name, password)
+        return if (isValidAdmin) {
+            "redirect:/restaurant/restaurant-dashboard" // Updated here
+        } else {
+            model.addAttribute("error", "Invalid name or password.")
+            "redirect:/restaurant/login-page" // Updated here
+        }
     }
 
     @GetMapping("/all")
