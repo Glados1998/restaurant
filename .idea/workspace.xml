@@ -4,7 +4,90 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a557296f-1e63-4d01-a85b-c419962df940" name="Changes" comment="" />
+    <list default="true" id="a557296f-1e63-4d01-a85b-c419962df940" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/my_restaurant/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/.idea/codeStyles/Project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/.idea/dataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/.idea/kotlinc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/src/main/kotlin/Admin/Admin.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/src/main/kotlin/Admin/AdminController.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/src/main/kotlin/Admin/AdminRepository.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/src/main/kotlin/Admin/AdminService.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/src/main/kotlin/Card/Card.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/src/main/kotlin/Card/CardController.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/src/main/kotlin/Card/CardRepository.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/src/main/kotlin/Card/CardService.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/src/main/kotlin/Dish/Dish.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/src/main/kotlin/Dish/DishController.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/src/main/kotlin/Dish/DishRepository.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/src/main/kotlin/Dish/DishService.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/src/main/kotlin/Menu/Menu.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/src/main/kotlin/Menu/MenuController.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/src/main/kotlin/Menu/MenuRepository.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/src/main/kotlin/Menu/MenuService.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/src/main/kotlin/Restaurant/Restaurant.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/src/main/kotlin/Restaurant/RestaurantController.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/src/main/kotlin/Restaurant/RestaurantRepository.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/src/main/kotlin/Restaurant/RestaurantService.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/src/main/kotlin/com/wac/my_restaurant/MyRestaurantApplication.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/src/main/resources/templates/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/src/test/kotlin/com/wac/my_restaurant/MyRestaurantApplicationTests.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/target/classes/Admin.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/target/classes/AdminController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/target/classes/AdminRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/target/classes/AdminService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/target/classes/Card/Card.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/target/classes/Card/CardController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/target/classes/CardRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/target/classes/CardService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/target/classes/Dish.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/target/classes/DishController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/target/classes/DishRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/target/classes/DishService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/target/classes/META-INF/my_restaurant.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/target/classes/Menu/Menu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/target/classes/Menu/MenuController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/target/classes/Menu/MenuRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/target/classes/Menu/MenuService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/target/classes/Restaurant/Restaurant.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/target/classes/Restaurant/RestaurantController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/target/classes/Restaurant/RestaurantRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/target/classes/Restaurant/RestaurantService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/target/classes/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/target/classes/com/wac/my_restaurant/MyRestaurantApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/target/classes/com/wac/my_restaurant/MyRestaurantApplicationKt.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurant/target/classes/templates/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurent/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurent/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurent/.idea/dataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurent/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurent/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurent/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurent/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurent/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurent/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurent/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurent/src/main/java/com/example/my_restaurent/Admin/Admin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurent/src/main/java/com/example/my_restaurent/Admin/AdminController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurent/src/main/java/com/example/my_restaurent/Admin/AdminRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurent/src/main/java/com/example/my_restaurent/Admin/AdminService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurent/src/main/java/com/example/my_restaurent/MyRestaurentApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurent/src/main/java/com/example/my_restaurent/Restaurent/IndexController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurent/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurent/src/main/resources/templates/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurent/src/test/java/com/example/my_restaurent/MyRestaurentApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurent/target/classes/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_restaurent/target/classes/templates/index.html" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,6 +126,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
@@ -81,6 +165,7 @@
       <option name="presentableId" value="Default" />
       <updated>1686060876937</updated>
       <workItem from="1686060878035" duration="5847000" />
+      <workItem from="1686855206859" duration="25000" />
     </task>
     <servers />
   </component>

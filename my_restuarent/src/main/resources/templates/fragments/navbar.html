@@ -1,0 +1,26 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<header th:fragment="navbar">
+    <nav>
+        <a href="">Restaurant</a>
+        <div>
+            <ul>
+                <li>
+                    <a th:href="@{/}">Home</a>
+                </li>
+                <li>
+                    <a th:href="@{/restaurant/about}">about</a>
+                </li>
+                <li>
+                    <a th:href="@{/restaurant/card}">Card</a>
+                </li>
+                <li>
+                    <a th:href="@{/restaurant/contact}">Contact</a>
+                </li>
+                <li>
+                    <a th:href="@{/restaurant/login}">Login</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+</html>

@@ -1,4 +1,0 @@
-package Card
-
-class CardController {
-}

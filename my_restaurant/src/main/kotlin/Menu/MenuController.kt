@@ -1,4 +1,0 @@
-package Menu
-
-class MenuController {
-}
