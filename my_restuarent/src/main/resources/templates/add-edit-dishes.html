@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/styles/style.css">
+
+</head>
+<body>
+test
+<form action="#" th:action="@{/dishes}" th:object="${dish}" th:method="post">
+    <input type="hidden" th:field="*{id}"/>
+    <label for="name">Dish Name:</label>
+    <input type="text" id="name" th:field="*{name}" required/>
+    <!-- Add other dish attributes here in the same manner. -->
+    <input type="submit" value="Submit"/>
+</form>
+</body>
+</html>

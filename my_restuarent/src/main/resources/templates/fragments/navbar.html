@@ -1,7 +1,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <header th:fragment="navbar">
     <nav>
-        <a href="">Restaurant</a>
+        <a th:href="@{/}">My Restaurant</a>
         <div>
             <ul>
                 <li>
@@ -9,6 +9,9 @@
                 </li>
                 <li>
                     <a th:href="@{/restaurant/card}">Card</a>
+                </li>
+                <li th:if="${session.admin != null}">
+                    <a th:href="@{/restaurant/restaurant-dashboard}">Restaurant dashboard</a>
                 </li>
                 <li>
                     <a th:href="@{/restaurant/contact}">Contact</a>
