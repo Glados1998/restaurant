@@ -13,8 +13,11 @@
                 <li>
                     <a th:href="@{/restaurant/contact}">Contact</a>
                 </li>
-                <li>
+                <li th:unless="${session.admin != null}">
                     <a th:href="@{/restaurant/login-page}">Login</a>
+                </li>
+                <li th:if="${session.admin != null}">
+                    <a th:href="@{/restaurant/logout}">Logout</a>
                 </li>
             </ul>
         </div>

@@ -1,5 +1,6 @@
 package com.wac.my_restuarant.Restaurant
 
+import jakarta.servlet.http.HttpSession
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Controller
@@ -36,25 +37,39 @@ class RestaurantController(private val restaurantService: RestaurantService) {
         return "login" // the name of the Thymeleaf template
     }
 
-    @GetMapping("/restaurant-dashboard")
-    fun restaurantDashboard(): String {
-        return "admin/restaurant-dashboard"
-    }
-
     @PostMapping("/login")
     fun login(
         @RequestParam("name") name: String,
         @RequestParam("password") password: String,
-        model: Model
+        model: Model,
+        session: HttpSession
     ): String {
         val isValidAdmin = restaurantService.authenticateAdmin(name, password)
         return if (isValidAdmin) {
-            "redirect:/restaurant/restaurant-dashboard" // Updated here
+            session.setAttribute("admin", name) // This sets the admin attribute in the session after successful login
+            "redirect:/restaurant/restaurant-dashboard"
         } else {
             model.addAttribute("error", "Invalid name or password.")
-            "redirect:/restaurant/login-page" // Updated here
+            "redirect:/restaurant/login-page"
         }
     }
+
+    @GetMapping("/logout")
+    fun logout(session: HttpSession): String {
+        session.invalidate()
+        return "redirect:/restaurant/login-page"
+    }
+
+    @GetMapping("/restaurant-dashboard")
+    fun dashboard(session: HttpSession): String {
+        val admin = session.getAttribute("admin")
+        return if (admin == null) {
+            "redirect:/restaurant/login-page" // If the admin attribute is not in the session, redirect to the login page
+        } else {
+            return "/admin/restaurant-dashboard" // If the admin attribute is in the session, display the dashboard
+        }
+    }
+
 
     @GetMapping("/all")
     fun findAll(): ResponseEntity<Iterable<Restaurant>> {
