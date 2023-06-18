@@ -1,9 +1,8 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<header th:fragment="navbar">
-    <nav>
+<header th:fragment="navbar" class="header">
+    <nav class="header_nav">
         <a th:href="@{/}">My Restaurant</a>
-        <div>
-            <ul>
+            <ul class="header_nav_bar">
                 <li>
                     <a th:href="@{/}">Home</a>
                 </li>
@@ -23,7 +22,6 @@
                     <a th:href="@{/restaurant/logout}">Logout</a>
                 </li>
             </ul>
-        </div>
     </nav>
 </header>
 </html>

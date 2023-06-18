@@ -2,24 +2,25 @@ package com.wac.my_restuarant.Dish
 
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
+import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.*
 
-@RestController
+@Controller
 @RequestMapping("/dishes")
 class DishController(private val dishService: DishService) {
 
     @GetMapping("/add")
     fun addDishForm(model: Model): String {
         model.addAttribute("dish", Dish())
-        return "add-edit-dishes"
+        return "admin/add-edit-dish"
     }
 
     @GetMapping("/{id}/edit")
     fun editDishForm(@PathVariable id: Long, model: Model): String {
         val dish = dishService.findById(id)
         model.addAttribute("dish", dish)
-        return "add-edit-dishes"
+        return "admin/add-edit-dish"
     }
 
     @GetMapping
@@ -28,18 +29,19 @@ class DishController(private val dishService: DishService) {
     }
 
     @GetMapping("/{id}")
-    fun findById(@PathVariable id: Long): ResponseEntity<Dish> {
-        return try {
-            ResponseEntity.ok(dishService.findById(id))
-        } catch (e: NoSuchElementException) {
-            ResponseEntity(HttpStatus.NOT_FOUND)
-        }
+    fun showDish(@PathVariable id: Long, model: Model): String {
+        val dish = dishService.findById(id)
+        model.addAttribute("dish", dish)
+        return "show/show-dish"
     }
 
+
     @PostMapping("/save")
-    fun create(@RequestBody dish: Dish): ResponseEntity<Dish> {
-        return ResponseEntity.ok(dishService.save(dish))
+    fun create(@ModelAttribute dish: Dish): String {
+        dishService.save(dish)
+        return "redirect:/admin/restaurant-dashboard"
     }
+
 
     @DeleteMapping("/{id}/delete")
     fun deleteById(@PathVariable id: Long): ResponseEntity<Void> {

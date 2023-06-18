@@ -1,0 +1,81 @@
+@import "colors";
+
+.btn {
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  background: $dark;
+  color: white;
+  margin: 0.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  width: fit-content;
+  height: fit-content;
+  transition: all 0.3s ease-in-out;
+  border: none;
+
+  &:hover {
+    transition: all 0.3s ease-in-out;
+    background: darken($dark, 10%);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  }
+}
+
+.btn-primary {
+  @extend .btn;
+  background: $blue;
+
+  &:hover {
+    background: darken($blue, 10%);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  }
+}
+
+.btn-success {
+  @extend .btn;
+  background: $succes;
+
+  &:hover {
+    background: darken($succes, 10%);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  }
+}
+
+.btn-danger {
+  @extend .btn;
+  background: $danger;
+
+  &:hover {
+    background: darken($danger, 10%);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  }
+}
+
+.btn-warning {
+  @extend .btn;
+  background: $warning;
+
+  &:hover {
+    background: darken($warning, 10%);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  }
+}
+
+.btn-info {
+  @extend .btn;
+  background: $info;
+
+  &:hover {
+    background: darken($info, 10%);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  }
+}
+
+.btn-select {
+  @extend .btn;
+  background: $purple;
+
+  &:hover {
+    background: darken($purple, 10%);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  }
+}

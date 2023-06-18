@@ -1,31 +1,44 @@
 package com.wac.my_restuarant.Card
 
+import com.wac.my_restuarant.Dish.Dish
+import com.wac.my_restuarant.Dish.DishService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
+import org.springframework.stereotype.Controller
+import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.*
 
-@RestController
+@Controller
 @RequestMapping("/cards")
-class CardController(private val cardService: CardService) {
+class CardController(
+    private val cardService: CardService,
+    private val dishService: DishService
+) {
 
-    @GetMapping
+    @GetMapping("/add")
+    fun addCardForm(model: Model): String {
+        model.addAttribute("card", Card())
+        return "admin/add-edit-card"
+    }
+
+    @PostMapping("/save")
+    fun saveCard(@ModelAttribute card: Card): String {
+        cardService.save(card)
+        return "redirect:/cards"
+    }
+
+    @GetMapping("/all")
     fun findAll(): ResponseEntity<Iterable<Card>> {
         return ResponseEntity.ok(cardService.findAll())
     }
 
     @GetMapping("/{id}")
-    fun findById(@PathVariable id: Long): ResponseEntity<Card> {
-        return try {
-            ResponseEntity.ok(cardService.findById(id))
-        } catch (e: NoSuchElementException) {
-            ResponseEntity(HttpStatus.NOT_FOUND)
-        }
+    fun showCard(@PathVariable id: Long, model: Model): String {
+        val card = cardService.findById(id)
+        model.addAttribute("card", card)
+        return "show/show-card"
     }
 
-    @PostMapping
-    fun create(@RequestBody card: Card): ResponseEntity<Card> {
-        return ResponseEntity.ok(cardService.save(card))
-    }
 
     @DeleteMapping("/{id}/delete")
     fun deleteById(@PathVariable id: Long): ResponseEntity<Void> {
@@ -44,5 +57,13 @@ class CardController(private val cardService: CardService) {
         } catch (e: NoSuchElementException) {
             ResponseEntity(HttpStatus.NOT_FOUND)
         }
+    }
+
+    @PostMapping("/card/{id}/addDish")
+    fun addDishToCard(@PathVariable("id") id: Long, @ModelAttribute dish: Dish, model: Model): String {
+        val card = cardService.findById(id)
+        dish.card = card
+        dishService.save(dish)
+        return "redirect:/card/" + id
     }
 }

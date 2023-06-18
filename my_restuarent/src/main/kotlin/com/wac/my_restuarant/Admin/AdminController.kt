@@ -2,9 +2,10 @@ package com.wac.my_restuarant.Admin
 
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
+import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.*
 
-@RestController
+@Controller
 @RequestMapping("/admins")
 class AdminController(private val adminService: AdminService) {
 
