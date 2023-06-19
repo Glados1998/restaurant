@@ -1,10 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-
+<div class="list">
+    <div th:each="card : ${cards}" class="card-preview">
+        <div th:text="${card.name}"></div>
+        <a th:href="@{/cards/{id}(id=${card.id})}">Show</a>
+    </div>
+</div>
 </body>
 </html>

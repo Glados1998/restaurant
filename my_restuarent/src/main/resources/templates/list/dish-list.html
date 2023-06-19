@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-
+<div class="list">
+    <div th:each="dish : ${dishes}" class="dish-preview">
+        <div th:text="${dish.name}"></div>
+        <div th:text="${dish.price}"></div>
+        <a th:href="@{/dishes/{id}(id=${dish.id})}">Show</a>
+    </div>
+</div>
 </body>
 </html>

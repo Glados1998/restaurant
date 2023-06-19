@@ -28,8 +28,10 @@ class CardController(
     }
 
     @GetMapping("/all")
-    fun findAll(): ResponseEntity<Iterable<Card>> {
-        return ResponseEntity.ok(cardService.findAll())
+    fun findAll(model: Model): String {
+        val cards = cardService.findAll()
+        model.addAttribute("cards", cards)
+        return "list/card-list"
     }
 
     @GetMapping("/{id}")

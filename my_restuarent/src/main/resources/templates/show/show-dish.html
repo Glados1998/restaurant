@@ -1,10 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-
+<main>
+    <div class="card">
+        <div class="card_header">
+            <h2 class="dish-title" th:text="${dish.name}">Title</h2>
+            <p class="dish-price">Euros: <b th:text="${dish.price}">Undefined</b></p>
+        </div>
+        <div class="card_body">
+            <img th:src="${dish.image}"/>
+            <p th:text="${dish.description}"></p>
+        </div>
+        <div class="card_footer">
+            <a th:href="@{/dishes/all}">Back to list</a>
+        </div>
+    </div>
+</main>
 </body>
 </html>

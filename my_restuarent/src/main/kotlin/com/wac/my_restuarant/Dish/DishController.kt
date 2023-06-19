@@ -23,9 +23,11 @@ class DishController(private val dishService: DishService) {
         return "admin/add-edit-dish"
     }
 
-    @GetMapping
-    fun findAll(): ResponseEntity<Iterable<Dish>> {
-        return ResponseEntity.ok(dishService.findAll())
+    @GetMapping("/all")
+    fun findAll(model: Model): String {
+        val dishes = dishService.findAll()
+        model.addAttribute("dishes", dishes)
+        return "list/dish-list"
     }
 
     @GetMapping("/{id}")

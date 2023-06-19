@@ -27,9 +27,11 @@ class MenuController(
         return "redirect:/menus"
     }
 
-    @GetMapping
-    fun findAll(): ResponseEntity<Iterable<Menu>> {
-        return ResponseEntity.ok(menuService.findAll())
+    @GetMapping("/all")
+    fun findAll(model: Model): String {
+        val menus = menuService.findAll()
+        model.addAttribute("menus", menus)
+        return "list/menu-list"
     }
 
     @GetMapping("/{id}")
