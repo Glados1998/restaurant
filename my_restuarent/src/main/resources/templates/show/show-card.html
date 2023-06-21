@@ -8,7 +8,10 @@
 <div class="card">
     <div class="card_header">
         <h2 class="dish-title" th:text="${card.name}">Title</h2>
-
+    </div>
+    <div class="card_footer">
+        <a th:href="@{/cards/all}">Back to list</a>
+        <a th:href="@{/cards/{id}/addDish(id=${card.id})}">Add dish to card</a>
     </div>
 </div></body>
 </html>

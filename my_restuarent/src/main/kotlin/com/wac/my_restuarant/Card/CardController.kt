@@ -61,11 +61,19 @@ class CardController(
         }
     }
 
-    @PostMapping("/card/{id}/addDish")
-    fun addDishToCard(@PathVariable("id") id: Long, @ModelAttribute dish: Dish, model: Model): String {
+    @GetMapping("/{id}/addDish")
+    fun addDishForm(@PathVariable id: Long, model: Model): String {
         val card = cardService.findById(id)
+        model.addAttribute("card", card)
+        model.addAttribute("dish", Dish())
+        return "admin/add-dish-to-card-form"
+    }
+
+    @PostMapping("/addDishToCard")
+    fun addDishToMenu(@ModelAttribute dish: Dish, @RequestParam cardId: Long): String {
+        val card = cardService.findById(cardId)
         dish.card = card
         dishService.save(dish)
-        return "redirect:/card/" + id
+        return "redirect:/cards/" + cardId
     }
 }

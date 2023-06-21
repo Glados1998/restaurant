@@ -18,7 +18,7 @@
     &_bar {
       display: grid;
       gap: 2rem;
-      grid-template-columns: repeat(4, minmax(min-content, max-content));
+      grid-auto-flow: column;
       align-items: center;
       justify-items: center;
       text-align: center;

@@ -59,15 +59,20 @@ class MenuController(
             ResponseEntity(HttpStatus.NOT_FOUND)
         }
     }
-    @PostMapping("/menu/{id}/addDish")
-    fun addDishToMenu(@PathVariable("id") id: Long, @ModelAttribute dish: Dish, @RequestParam(required=false) addToCardDirectly: Boolean, model: Model): String {
+
+    @GetMapping("/{id}/addDish")
+    fun addDishForm(@PathVariable id: Long, model: Model): String {
         val menu = menuService.findById(id)
+        model.addAttribute("menu", menu)
+        model.addAttribute("dish", Dish())
+        return "admin/add-dish-to-menu-form"
+    }
+    @PostMapping("/addDishToMenu")
+    fun addDishToMenu(@ModelAttribute dish: Dish, @RequestParam menuId: Long): String {
+        val menu = menuService.findById(menuId)
         dish.menu = menu
-        if(addToCardDirectly) {
-            dish.card = menu.card
-        }
         dishService.save(dish)
-        return "redirect:/menu/" + id
+        return "redirect:/menus/" + menuId
     }
 
 }
