@@ -3,20 +3,22 @@ package com.wac.my_restuarant.Persona
 import org.springframework.stereotype.Service
 
 @Service
-class PersonaService(private val reviewRepository: ReviewRepository) {
+class PersonaService(private val personaRepository: PersonaRepository) {
 
-    fun findAll(): Iterable<Review> = reviewRepository.findAll()
+    fun findAll(): Iterable<Persona> = personaRepository.findAll()
 
-    fun findById(id: Long): Review = reviewRepository.findById(id).orElseThrow()
+    fun findById(id: Long): Persona = personaRepository.findById(id).orElseThrow()
 
-    fun save(review: Review): Review = reviewRepository.save(review)
+    fun save(Persona: Persona): Persona = personaRepository.save(Persona)
 
-    fun deleteById(id: Long) = reviewRepository.deleteById(id)
+    fun deleteById(id: Long) = personaRepository.deleteById(id)
 
-    fun edit (id: Long, review: Review): Review {
-        val adminToEdit = findById(id)
-        adminToEdit.name = review.name
-        adminToEdit.password = review.password
-        return save(adminToEdit)
+    fun edit (id: Long, Persona: Persona): Persona {
+        val personaToEdit = findById(id)
+        personaToEdit.mainColor = Persona.mainColor
+        personaToEdit.secondaryColor = Persona.secondaryColor
+        personaToEdit.linkColor = Persona.linkColor
+        personaToEdit.headerImage = Persona.headerImage
+        return save(personaToEdit)
     }
 }

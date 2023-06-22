@@ -70,6 +70,11 @@ class RestaurantController(private val restaurantService: RestaurantService) {
         }
     }
 
+    @GetMapping("/settings")
+    fun settings(): String {
+        return "/admin/restaurant-settings" // the name of the Thymeleaf template
+    }
+
 
     @GetMapping("/all")
     fun findAll(): ResponseEntity<Iterable<Restaurant>> {

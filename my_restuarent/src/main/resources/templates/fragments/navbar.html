@@ -1,27 +1,27 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <header th:fragment="navbar" class="header">
     <nav class="header_nav">
-        <a th:href="@{/}">My Restaurant</a>
-            <ul class="header_nav_bar">
-                <li>
-                    <a th:href="@{/}">Home</a>
-                </li>
-                <li>
-                    <a th:href="@{/restaurant/card}">Card</a>
-                </li>
-                <li th:if="${session.admin != null}">
-                    <a th:href="@{/restaurant/restaurant-dashboard}">Restaurant dashboard</a>
-                </li>
-                <li>
-                    <a th:href="@{/restaurant/contact}">Contact</a>
-                </li>
-                <li th:unless="${session.admin != null}">
-                    <a th:href="@{/restaurant/login-page}">Login</a>
-                </li>
-                <li th:if="${session.admin != null}">
-                    <a th:href="@{/restaurant/logout}">Logout</a>
-                </li>
-            </ul>
+        <a th:href="@{/}" class="logo">My Restaurant</a>
+        <ul class="header_nav_bar">
+            <li class="header_nav_bar_link">
+                <a th:href="@{/}">Home</a>
+            </li>
+            <li class="header_nav_bar_link">
+                <a class="header_nav_bar_link_item" th:href="@{/restaurant/card}">Card</a>
+            </li>
+            <li class="header_nav_bar_link" th:if="${session.admin != null}">
+                <a class="header_nav_bar_link_item" th:href="@{/restaurant/restaurant-dashboard}">Dashboard</a>
+            </li>
+            <li class="header_nav_bar_link">
+                <a class="header_nav_bar_link_item" th:href="@{/restaurant/contact}">Contact</a>
+            </li>
+            <li class="header_nav_bar_link" th:unless="${session.admin != null}">
+                <a class="header_nav_bar_link_item" th:href="@{/restaurant/login-page}">Login</a>
+            </li>
+            <li class="header_nav_bar_link" th:if="${session.admin != null}">
+                <a class="header_nav_bar_link_item" th:href="@{/restaurant/logout}">Logout</a>
+            </li>
+        </ul>
     </nav>
 </header>
 </html>

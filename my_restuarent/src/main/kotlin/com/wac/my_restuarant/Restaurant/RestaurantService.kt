@@ -27,8 +27,6 @@ class RestaurantService(
         val restaurantToEdit = findById(id)
         restaurantToEdit.name = restaurant.name
         restaurantToEdit.url = restaurant.url
-        restaurantToEdit.colorChoice = restaurant.colorChoice
-        restaurantToEdit.image = restaurant.image
         return save(restaurantToEdit)
     }
 
