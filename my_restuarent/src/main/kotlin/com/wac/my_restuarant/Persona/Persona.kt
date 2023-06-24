@@ -14,8 +14,9 @@ data class Persona (
     var secondaryColor: String = "",
     var linkColor : String = "",
 
+/*    @Column(name = "headerImage",length = 100000)
     @Lob
-    var headerImage : ByteArray = byteArrayOf(),
+    var headerImage : ByteArray = byteArrayOf(),*/
 
     @OneToOne(mappedBy = "persona", cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
     var restaurant: Restaurant? = null

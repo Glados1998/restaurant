@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="/styles/style.css">
 </head>
 <body>
+<div th:include="fragments/navbar::navbar"></div>
+<div th:include="fragments/dashboard-navbar::dashboard-navbar"></div>
+
 <div class="list">
     <div th:each="dish : ${dishes}" class="dish-preview">
         <div th:text="${dish.name}"></div>
@@ -12,5 +16,6 @@
         <a th:href="@{/dishes/{id}(id=${dish.id})}">Show</a>
     </div>
 </div>
+<div th:include="fragments/footer::footer"></div>
 </body>
 </html>

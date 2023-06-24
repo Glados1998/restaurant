@@ -10,7 +10,7 @@
     <div class="intro">
 
         <div class="intro_text">
-            <h1>Welcome to my restaurant.</h1>
+            <h1>Welcome to my <span th:text="${restaurant?.name ?: 'My Restaurant'}"></span></h1>
             <h3>witness the best what <br> the gastronomy has to offer.</h3>
         </div>
     </div>

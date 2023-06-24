@@ -1,0 +1,21 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="dashboard-navbar">
+    <nav class="dashboard">
+        <h3>Dashboard</h3>
+        <ul class="dashboard_nav">
+            <li class="dashboard_nav_link">
+                <a class="dashboard_nav_link_item" th:href="@{/cards/all}">Card</a>
+            </li>
+            <li class="dashboard_nav_link">
+                <a class="dashboard_nav_link_item" th:href="@{/menus/all}">Menus</a>
+            </li>
+            <li class="dashboard_nav_link">
+                <a class="dashboard_nav_link_item" th:href="@{/dishes/all}">Dishes</a>
+            </li>
+            <li class="dashboard_nav_link">
+                <a class="dashboard_nav_link_item" th:href="@{/restaurant/settings}">Settings</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+</html>

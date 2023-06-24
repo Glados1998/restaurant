@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="/styles/style.css">
 </head>
 <body>
 <main>
+    <div th:include="fragments/footer::footer"></div>
     <div class="card">
         <div class="card_header">
             <h2 class="dish-title" th:text="${dish.name}">Title</h2>
@@ -19,6 +21,7 @@
             <a th:href="@{/dishes/all}">Back to list</a>
         </div>
     </div>
+    <div th:include="fragments/navbar::navbar"></div>
 </main>
 </body>
 </html>

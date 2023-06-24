@@ -27,6 +27,10 @@ class RestaurantService(
         val restaurantToEdit = findById(id)
         restaurantToEdit.name = restaurant.name
         restaurantToEdit.url = restaurant.url
+        restaurantToEdit.streetAddress = restaurant.streetAddress
+        restaurantToEdit.streetNumber = restaurant.streetNumber
+        restaurantToEdit.city = restaurant.city
+        restaurantToEdit.postalCode = restaurant.postalCode
         return save(restaurantToEdit)
     }
 
@@ -42,5 +46,10 @@ class RestaurantService(
             return password == admin.password
         }
         return false
+    }
+
+    fun getRestaurant(): Restaurant? {
+        val restaurantList = restaurantRepository.findAll().toList()
+        return if (restaurantList.isNotEmpty()) restaurantList.first() else null
     }
 }

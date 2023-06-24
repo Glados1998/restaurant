@@ -3,8 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="/styles/style.css">
+
 </head>
 <body>
-hello
+<div th:include="fragments/navbar::navbar"></div>
+<main>
+    <div>
+        <div>
+            <h3>Restaurant settings</h3>
+        </div>
+        <div>
+            <form action="#" th:action="@{/restaurant/settings/save}" th:object="${restaurant}" method="post">
+
+                <label for="name">Name:</label>
+                <input type="text" id="name" th:field="*{name}" required/>
+
+                <label for="url">URL:</label>
+                <input type="text" id="url" th:field="*{url}" required/>
+
+                <label for="streetAddress">Street Address:</label>
+                <input type="text" id="streetAddress" th:field="*{streetAddress}" required/>
+
+                <label for="streetNumber">Street Number:</label>
+                <input type="text" id="streetNumber" th:field="*{streetNumber}" required/>
+
+                <label for="city">City:</label>
+                <input type="text" id="city" th:field="*{city}" required/>
+
+                <label for="postalCode">Postal Code:</label>
+                <input type="text" id="postalCode" th:field="*{postalCode}" required/>
+
+                <!--<label for="persona">Persona:</label>
+                <select id="persona" th:field="*{persona.id}">
+                    <option value="" selected disabled>Select persona</option>
+                    <option th:each="persona : ${personas}" th:value="${persona.id}"></option>
+                </select>-->
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+    <div>
+        <div th:include="fragments/dashboard-navbar::dashboard-navbar"></div>
+    </div>
+</main>
+<div th:include="fragments/footer::footer"></div>
 </body>
 </html>

@@ -15,8 +15,10 @@ class PersonaController(
 ) {
 
     @GetMapping("/all")
-    fun findAll(): ResponseEntity<Iterable<Persona>> {
-        return ResponseEntity.ok(personaService.findAll())
+    fun findAll(model: Model): String {
+        val persona = personaService.findAll()
+        model.addAttribute("persona", persona)
+        return "list/persona-list"
     }
 
     @GetMapping("/{id}")
@@ -35,15 +37,17 @@ class PersonaController(
     }
 
     @PostMapping("/save")
-    fun create(@ModelAttribute persona: Persona, @RequestParam("headerImage") image: MultipartFile): ResponseEntity<Persona> {
+    fun create(@ModelAttribute persona: Persona): ResponseEntity<Persona> {
         return try {
-            persona.headerImage = image.bytes
+//            persona.headerImage = image.bytes
             val savedPersona = personaRepository.save(persona)
             ResponseEntity.ok(savedPersona)
+
         } catch (e: Exception) {
             ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build()
         }
     }
+
 
 
     @DeleteMapping("/{id}/delete")
@@ -58,6 +62,15 @@ class PersonaController(
 
     @PutMapping("/{id}/edit")
     fun edit(@PathVariable id: Long, @RequestBody persona: Persona): ResponseEntity<Persona> {
+        return try {
+            ResponseEntity.ok(personaService.edit(id, persona))
+        } catch (e: NoSuchElementException) {
+            ResponseEntity(HttpStatus.NOT_FOUND)
+        }
+    }
+
+    @PostMapping("/{id}/set")
+    fun setPersona(@PathVariable id: Long, @RequestBody persona: Persona): ResponseEntity<Persona> {
         return try {
             ResponseEntity.ok(personaService.edit(id, persona))
         } catch (e: NoSuchElementException) {

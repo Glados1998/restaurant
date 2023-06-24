@@ -18,7 +18,9 @@ class PersonaService(private val personaRepository: PersonaRepository) {
         personaToEdit.mainColor = Persona.mainColor
         personaToEdit.secondaryColor = Persona.secondaryColor
         personaToEdit.linkColor = Persona.linkColor
+/*
         personaToEdit.headerImage = Persona.headerImage
+*/
         return save(personaToEdit)
     }
 }

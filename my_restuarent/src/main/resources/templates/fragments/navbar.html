@@ -1,7 +1,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <header th:fragment="navbar" class="header">
     <nav class="header_nav">
-        <a th:href="@{/}" class="logo">My Restaurant</a>
+        <a th:href="@{/}" class="logo" th:text="${restaurant?.name ?: 'My Restaurant'}"></a>
         <ul class="header_nav_bar">
             <li class="header_nav_bar_link">
                 <a th:href="@{/}">Home</a>

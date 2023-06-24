@@ -7,7 +7,7 @@
 
 </head>
 <body>
-test
+<div th:include="fragments/navbar::navbar"></div>
 <form action="#" th:action="@{/dishes/save}" th:object="${dish}" th:method="post">
     <input type="hidden" th:field="*{id}"/>
     <div>
@@ -29,5 +29,6 @@ test
     </div>
     <input type="submit" value="Submit"/>
 </form>
+<div th:include="fragments/footer::footer"></div>
 </body>
 </html>

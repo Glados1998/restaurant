@@ -1,18 +1,26 @@
 package com.wac.my_restuarant.Restaurant
 
+import com.wac.my_restuarant.Persona.PersonaRepository
 import jakarta.servlet.http.HttpSession
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
+import org.springframework.validation.BindingResult
 import org.springframework.web.bind.annotation.*
 
 @Controller
 @RequestMapping("/restaurant")
-class RestaurantController(private val restaurantService: RestaurantService) {
+class RestaurantController(
+    private val restaurantService: RestaurantService,
+    private val restaurantRepository: RestaurantRepository,
+    private val personaRepository: PersonaRepository
+) {
 
     @GetMapping("/")
-    fun index(): String {
+    fun index(model: Model): String {
+        val restaurant = restaurantService.getRestaurant()
+        model.addAttribute("restaurant", restaurant)
         return "index" // the name of the Thymeleaf template
     }
 
@@ -71,8 +79,46 @@ class RestaurantController(private val restaurantService: RestaurantService) {
     }
 
     @GetMapping("/settings")
-    fun settings(): String {
+    fun settings(model: Model): String {
+        val restaurant = restaurantRepository.findById(1).orElse(Restaurant())
+        model.addAttribute("restaurant", restaurant)
         return "/admin/restaurant-settings" // the name of the Thymeleaf template
+    }
+
+    @PostMapping("/settings/save")
+    fun restaurantSettings(@ModelAttribute restaurant: Restaurant, bindingResult: BindingResult, model: Model): String {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("personas", personaRepository.findAll())
+            return "admin/restaurant-settings"
+        }
+
+        if (restaurant.persona?.id != null) {
+            val persona = personaRepository.findById(restaurant.persona!!.id)
+            if (persona.isPresent) {
+                restaurant.persona = persona.get()
+            } else {
+                // handle the error when the persona is not found
+                model.addAttribute("personas", personaRepository.findAll())
+                model.addAttribute("error", "Persona not found.")
+                return "admin/restaurant-settings"
+            }
+        }
+
+        val existingRestaurant = restaurantService.getRestaurant()
+        if (existingRestaurant != null) {
+            existingRestaurant.name = restaurant.name
+            existingRestaurant.url = restaurant.url
+            existingRestaurant.streetAddress = restaurant.streetAddress
+            existingRestaurant.streetNumber = restaurant.streetNumber
+            existingRestaurant.city = restaurant.city
+            existingRestaurant.postalCode = restaurant.postalCode
+            existingRestaurant.persona = restaurant.persona
+            restaurantService.save(existingRestaurant)
+        } else {
+            restaurantService.save(restaurant)
+        }
+
+        return "redirect:/restaurant/restaurant-dashboard" // you can redirect to wherever you want upon successful save
     }
 
 
@@ -88,11 +134,6 @@ class RestaurantController(private val restaurantService: RestaurantService) {
         } catch (e: NoSuchElementException) {
             ResponseEntity(HttpStatus.NOT_FOUND)
         }
-    }
-
-    @PostMapping
-    fun create(@RequestBody restaurant: Restaurant): ResponseEntity<Restaurant> {
-        return ResponseEntity.ok(restaurantService.save(restaurant))
     }
 
     @DeleteMapping("/{id}/delete")

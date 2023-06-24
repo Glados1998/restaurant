@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:include="fragments/navbar::navbar"></div>
+<form th:action="@{/cards/addMenuToCard}" th:object="${menu}" method="post">
+    <select th:field="*{id}">
+        <option th:each="menu : ${allMenus}" th:value="${menu.id}" th:text="${menu.name}">Menu</option>
+    </select>
+    <input type="text" th:field="*{name}" placeholder="Or enter a new menu name..."/>
+    <input type="hidden" name="cardId" th:value="${card.id}">
+    <input type="submit" value="Add Menu to Card">
+</form>
+<div th:include="fragments/footer::footer"></div>
+</body>
+</html>
