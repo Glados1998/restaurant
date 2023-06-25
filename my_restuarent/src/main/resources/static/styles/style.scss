@@ -5,19 +5,65 @@
 
 body {
   margin: 0;
+  font-family: "SF Pro", sans-serif;
 }
 
 main {
   padding: 2rem;
 }
 
+a:link, a:visited {
+  text-decoration: none;
+}
 
 .footer {
-  position: fixed;
+  display: grid;
+  gap: 4rem;
+  grid-auto-flow: column;
+  grid-auto-columns: min-content;
+  position: relative;
   width: 100%;
   bottom: 0;
-  background: #000;
   margin: 0;
   padding: 1rem;
-  color: #fff;
+
+  &_container {
+    padding: 1.5rem;
+    width: 100%;
+    max-width: 10rem;
+  }
+}
+
+.grid {
+  &_2-3 {
+    gap: 1rem;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-template-rows: repeat(2, auto);
+  }
+
+  &_1-2 {
+    gap: 1rem;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: repeat(1, auto);
+    justify-content: center;
+    align-items: center;
+  }
+  &_2-2 {
+    gap: 2rem;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: repeat(2, auto);
+    justify-content: center;
+    align-items: center;
+  }
+  &_2-1 {
+    gap: 1rem;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: repeat(1, auto);
+    justify-content: center;
+    align-items: center;
+  }
 }

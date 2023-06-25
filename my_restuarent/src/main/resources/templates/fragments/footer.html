@@ -1,7 +1,18 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <div th:fragment="footer">
     <footer class="footer">
-        Hello World!
+        <div class="footer_container">
+            <h3><span th:text="${restaurant?.name ?: 'My Restaurant'}"></span></h3>
+            <p>All rights reserved</p>
+            <p>Developed by <a href="https://www.linkedin.com/in/jerome-greder/" target="_blank">Jerome Greder</a></p>
+            <p>With Jetbrains <br> IntelliJ IDEA</p>
+        </div>
+        <div class="footer_container">
+            <h3>Contact:</h3>
+            <p>Address: <span th:text="${restaurant?.streetAddress ?: 'Unknown'}"></span> <span th:text="${restaurant?.streetNumber ?: 'Unknown'}"></span>, <span th:text="${restaurant?.city ?: 'Unknown'}"></span>, <span th:text="${restaurant?.postalCode ?: 'Unknown'}"></span></p>
+            <p>Phone: <span th:text="${restaurant?.phone ?: 'Unknown'}"></span></p>
+            <p>Email: <span th:text="${restaurant?.email ?: 'Unknown'}"></span></p>
+        </div>
     </footer>
 </div>
 </html>

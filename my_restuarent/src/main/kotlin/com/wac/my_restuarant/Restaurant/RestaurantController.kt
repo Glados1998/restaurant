@@ -1,6 +1,5 @@
 package com.wac.my_restuarant.Restaurant
 
-import com.wac.my_restuarant.Persona.PersonaRepository
 import jakarta.servlet.http.HttpSession
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.*
 class RestaurantController(
     private val restaurantService: RestaurantService,
     private val restaurantRepository: RestaurantRepository,
-    private val personaRepository: PersonaRepository
 ) {
 
     @GetMapping("/")
@@ -35,9 +33,9 @@ class RestaurantController(
         return "card" // the name of the Thymeleaf template
     }
 
-    @GetMapping("/contact")
+    @GetMapping("/about")
     fun contact(): String {
-        return "contact" // the name of the Thymeleaf template
+        return "about" // the name of the Thymeleaf template
     }
 
     @GetMapping("/login-page")
@@ -55,7 +53,7 @@ class RestaurantController(
         val isValidAdmin = restaurantService.authenticateAdmin(name, password)
         return if (isValidAdmin) {
             session.setAttribute("admin", name) // This sets the admin attribute in the session after successful login
-            "redirect:/restaurant/restaurant-dashboard"
+            "redirect:/restaurant/settings"
         } else {
             model.addAttribute("error", "Invalid name or password.")
             "redirect:/restaurant/login-page"
@@ -74,7 +72,7 @@ class RestaurantController(
         return if (admin == null) {
             "redirect:/restaurant/login-page" // If the admin attribute is not in the session, redirect to the login page
         } else {
-            return "/admin/restaurant-dashboard" // If the admin attribute is in the session, display the dashboard
+            return "/admin/restaurant/settings" // If the admin attribute is in the session, display the dashboard
         }
     }
 
@@ -88,22 +86,8 @@ class RestaurantController(
     @PostMapping("/settings/save")
     fun restaurantSettings(@ModelAttribute restaurant: Restaurant, bindingResult: BindingResult, model: Model): String {
         if (bindingResult.hasErrors()) {
-            model.addAttribute("personas", personaRepository.findAll())
             return "admin/restaurant-settings"
         }
-
-        if (restaurant.persona?.id != null) {
-            val persona = personaRepository.findById(restaurant.persona!!.id)
-            if (persona.isPresent) {
-                restaurant.persona = persona.get()
-            } else {
-                // handle the error when the persona is not found
-                model.addAttribute("personas", personaRepository.findAll())
-                model.addAttribute("error", "Persona not found.")
-                return "admin/restaurant-settings"
-            }
-        }
-
         val existingRestaurant = restaurantService.getRestaurant()
         if (existingRestaurant != null) {
             existingRestaurant.name = restaurant.name
@@ -112,13 +96,20 @@ class RestaurantController(
             existingRestaurant.streetNumber = restaurant.streetNumber
             existingRestaurant.city = restaurant.city
             existingRestaurant.postalCode = restaurant.postalCode
-            existingRestaurant.persona = restaurant.persona
+            existingRestaurant.email = restaurant.email
+            existingRestaurant.phone = restaurant.phone
+            existingRestaurant.mainColor = restaurant.mainColor
+            existingRestaurant.secondaryColor = restaurant.secondaryColor
+            existingRestaurant.fontColor = restaurant.fontColor
+            existingRestaurant.linkColor = restaurant.linkColor
+            existingRestaurant.headerImage = restaurant.headerImage
+            existingRestaurant.description = restaurant.description
             restaurantService.save(existingRestaurant)
         } else {
             restaurantService.save(restaurant)
         }
 
-        return "redirect:/restaurant/restaurant-dashboard" // you can redirect to wherever you want upon successful save
+        return "redirect:/restaurant/settings" // you can redirect to wherever you want upon successful save
     }
 
 

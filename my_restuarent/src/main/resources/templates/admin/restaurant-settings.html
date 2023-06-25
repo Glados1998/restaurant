@@ -10,42 +10,92 @@
 <div th:include="fragments/navbar::navbar"></div>
 <main>
     <div>
-        <div>
+        <div th:include="fragments/dashboard-navbar::dashboard-navbar"></div>
+    </div>
+    <div class="settings">
+        <div class="settings_header">
             <h3>Restaurant settings</h3>
         </div>
-        <div>
-            <form action="#" th:action="@{/restaurant/settings/save}" th:object="${restaurant}" method="post">
+        <form action="#" th:action="@{/restaurant/settings/save}" th:object="${restaurant}" method="post"
+              class="settings_form form">
+            <div class="grid_2-3">
+                <div class="settings_form_container">
+                    <label class="form_label" for="name">Name:</label>
+                    <input class="form_input" type="text" id="name" th:field="*{name}"/>
+                </div>
 
-                <label for="name">Name:</label>
-                <input type="text" id="name" th:field="*{name}" required/>
+                <div class="settings_form_container">
+                    <label class="form_label" for="url">URL:</label>
+                    <input class="form_input" type="text" id="url" th:field="*{url}"/>
+                </div>
 
-                <label for="url">URL:</label>
-                <input type="text" id="url" th:field="*{url}" required/>
+                <div class="settings_form_container">
+                    <label class="form_label" for="streetAddress">Street Address:</label>
+                    <input class="form_input" type="text" id="streetAddress" th:field="*{streetAddress}"/>
+                </div>
 
-                <label for="streetAddress">Street Address:</label>
-                <input type="text" id="streetAddress" th:field="*{streetAddress}" required/>
+                <div class="settings_form_container">
+                    <label class="form_label" for="streetNumber">Street Number:</label>
+                    <input class="form_input" type="text" id="streetNumber" th:field="*{streetNumber}"/>
+                </div>
 
-                <label for="streetNumber">Street Number:</label>
-                <input type="text" id="streetNumber" th:field="*{streetNumber}" required/>
+                <div class="settings_form_container">
+                    <label class="form_label" for="city">City:</label>
+                    <input class="form_input" type="text" id="city" th:field="*{city}"/>
+                </div>
 
-                <label for="city">City:</label>
-                <input type="text" id="city" th:field="*{city}" required/>
+                <div class="settings_form_container">
+                    <label class="form_label" for="postalCode">Postal Code:</label>
+                    <input class="form_input" type="text" id="postalCode" th:field="*{postalCode}"/>
+                </div>
+            </div>
+            <div class="grid_1-2">
+                <div class="settings_form_container">
+                    <label class="form_label" for="email">email:</label>
+                    <input class="form_input" type="email" id="email" th:field="*{email}"/>
+                </div>
 
-                <label for="postalCode">Postal Code:</label>
-                <input type="text" id="postalCode" th:field="*{postalCode}" required/>
+                <div class="settings_form_container">
+                    <label class="form_label" for="phone">tel:</label>
+                    <input class="form_input" type="tel" id="phone" th:field="*{phone}"/>
+                </div>
+            </div>
 
-                <!--<label for="persona">Persona:</label>
-                <select id="persona" th:field="*{persona.id}">
-                    <option value="" selected disabled>Select persona</option>
-                    <option th:each="persona : ${personas}" th:value="${persona.id}"></option>
-                </select>-->
+            <div class="grid_2-2">
+                <div class="settings_form_container">
+                    <label class="form_label" for="mainColor">mainColor:</label>
+                    <input type="color" id="mainColor" th:field="*{mainColor}"/>
+                </div>
+                <div class="settings_form_container">
+                    <label class="form_label" for="secondaryColor">secondaryColor:</label>
+                    <input type="color" id="secondaryColor" th:field="*{secondaryColor}"/>
+                </div>
+                <div class="settings_form_container">
+                    <label class="form_label" for="fontColor">fontColor:</label>
+                    <input type="color" id="fontColor" th:field="*{fontColor}"/>
+                </div>
+                <div class="settings_form_container">
+                    <label class="form_label" for="linkColor">linkColor:</label>
+                    <input type="color" id="linkColor" th:field="*{linkColor}"/>
+                </div>
+            </div>
+            <div class="grid_2-1">
+                <div class="settings_form_container">
+                    <label class="form_label" for="headerImage">headerImage:</label>
+                    <input type="file" id="headerImage" th:field="*{headerImage}"/>
+                </div>
+                <div class="settings_form_container">
+                    <label class="form_label" for="description">description:</label>
+                    <textarea class="form_input" id="description" th:field="*{description}" rows="10" cols="8"></textarea>
+                </div>
 
-                <button type="submit">Submit</button>
-            </form>
-        </div>
-    </div>
-    <div>
-        <div th:include="fragments/dashboard-navbar::dashboard-navbar"></div>
+            </div>
+
+
+            <div class="settings_form_container">
+                <button class="btn-success" type="submit">Save</button>
+            </div>
+        </form>
     </div>
 </main>
 <div th:include="fragments/footer::footer"></div>

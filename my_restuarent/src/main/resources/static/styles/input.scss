@@ -1,6 +1,9 @@
 @import "colors";
 
-.contact_form_element {
+.form {
+  display: grid;
+  gap: 1rem;
+  grid-auto-flow: row;
   width: fit-content;
   height: fit-content;
   margin: 1rem auto;
@@ -25,6 +28,7 @@
       scale: 1.05;
       box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
     }
+
     &:focus {
       scale: 1.05;
       box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
