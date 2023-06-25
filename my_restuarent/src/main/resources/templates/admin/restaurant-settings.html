@@ -8,94 +8,92 @@
 </head>
 <body>
 <div th:include="fragments/navbar::navbar"></div>
-<main>
+<main class="dashboard-grid">
     <div>
         <div th:include="fragments/dashboard-navbar::dashboard-navbar"></div>
     </div>
     <div class="settings">
         <div class="settings_header">
-            <h3>Restaurant settings</h3>
+            <h3>Paramètres du restaurant</h3>
         </div>
         <form action="#" th:action="@{/restaurant/settings/save}" th:object="${restaurant}" method="post"
               class="settings_form form">
             <div class="grid_2-3">
                 <div class="settings_form_container">
-                    <label class="form_label" for="name">Name:</label>
+                    <label class="form_label" for="name">Nom :</label>
                     <input class="form_input" type="text" id="name" th:field="*{name}"/>
                 </div>
-
                 <div class="settings_form_container">
-                    <label class="form_label" for="url">URL:</label>
+                    <label class="form_label" for="url">URL :</label>
                     <input class="form_input" type="text" id="url" th:field="*{url}"/>
                 </div>
 
                 <div class="settings_form_container">
-                    <label class="form_label" for="streetAddress">Street Address:</label>
+                    <label class="form_label" for="streetAddress">Adresse :</label>
                     <input class="form_input" type="text" id="streetAddress" th:field="*{streetAddress}"/>
                 </div>
 
                 <div class="settings_form_container">
-                    <label class="form_label" for="streetNumber">Street Number:</label>
+                    <label class="form_label" for="streetNumber">Numéro de rue :</label>
                     <input class="form_input" type="text" id="streetNumber" th:field="*{streetNumber}"/>
                 </div>
 
                 <div class="settings_form_container">
-                    <label class="form_label" for="city">City:</label>
+                    <label class="form_label" for="city">Ville :</label>
                     <input class="form_input" type="text" id="city" th:field="*{city}"/>
                 </div>
 
                 <div class="settings_form_container">
-                    <label class="form_label" for="postalCode">Postal Code:</label>
+                    <label class="form_label" for="postalCode">Code postal :</label>
                     <input class="form_input" type="text" id="postalCode" th:field="*{postalCode}"/>
                 </div>
             </div>
             <div class="grid_1-2">
                 <div class="settings_form_container">
-                    <label class="form_label" for="email">email:</label>
+                    <label class="form_label" for="email">Email :</label>
                     <input class="form_input" type="email" id="email" th:field="*{email}"/>
                 </div>
 
                 <div class="settings_form_container">
-                    <label class="form_label" for="phone">tel:</label>
+                    <label class="form_label" for="phone">Téléphone :</label>
                     <input class="form_input" type="tel" id="phone" th:field="*{phone}"/>
                 </div>
             </div>
 
             <div class="grid_2-2">
                 <div class="settings_form_container">
-                    <label class="form_label" for="mainColor">mainColor:</label>
+                    <label class="form_label" for="mainColor">Couleur principale :</label>
                     <input type="color" id="mainColor" th:field="*{mainColor}"/>
                 </div>
                 <div class="settings_form_container">
-                    <label class="form_label" for="secondaryColor">secondaryColor:</label>
+                    <label class="form_label" for="secondaryColor">Couleur secondaire :</label>
                     <input type="color" id="secondaryColor" th:field="*{secondaryColor}"/>
                 </div>
                 <div class="settings_form_container">
-                    <label class="form_label" for="fontColor">fontColor:</label>
+                    <label class="form_label" for="fontColor">Couleur de la police :</label>
                     <input type="color" id="fontColor" th:field="*{fontColor}"/>
                 </div>
                 <div class="settings_form_container">
-                    <label class="form_label" for="linkColor">linkColor:</label>
+                    <label class="form_label" for="linkColor">Couleur des liens :</label>
                     <input type="color" id="linkColor" th:field="*{linkColor}"/>
                 </div>
             </div>
             <div class="grid_2-1">
                 <div class="settings_form_container">
-                    <label class="form_label" for="headerImage">headerImage:</label>
+                    <label class="form_label" for="headerImage">Image d'en-tête :</label>
                     <input type="file" id="headerImage" th:field="*{headerImage}"/>
                 </div>
                 <div class="settings_form_container">
-                    <label class="form_label" for="description">description:</label>
-                    <textarea class="form_input" id="description" th:field="*{description}" rows="10" cols="8"></textarea>
+                    <label class="form_label" for="description">Description :</label>
+                    <textarea class="form_input" id="description" th:field="*{description}" rows="10"
+                              cols="8"></textarea>
                 </div>
-
             </div>
-
-
             <div class="settings_form_container">
-                <button class="btn-success" type="submit">Save</button>
+                <button class="btn-success" type="submit">Enregistrer</button>
             </div>
         </form>
+
     </div>
 </main>
 <div th:include="fragments/footer::footer"></div>

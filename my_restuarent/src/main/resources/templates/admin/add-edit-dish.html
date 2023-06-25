@@ -8,27 +8,28 @@
 </head>
 <body>
 <div th:include="fragments/navbar::navbar"></div>
-<form action="#" th:action="@{/dishes/save}" th:object="${dish}" th:method="post">
-    <input type="hidden" th:field="*{id}"/>
-    <div>
-        <label for="name">Dish Name:</label>
-        <input type="text" id="name" th:field="*{name}" required/>
-    </div>
-    <div>
-        <label for="price">Price:</label>
-        <input type="number" id="price" th:field="*{price}" required/>
-    </div>
-    <div>
-        <label for="description">Description:</label>
-        <textarea id="description" th:field="*{description}" required minlength="5" maxlength="100">
-        </textarea>
-    </div>
-    <div>
-        <label for="image">Image:</label>
-        <input type="file" id="image" accept="image/.png,.jpg," th:field="*{image}" required/>
-    </div>
-    <input type="submit" value="Submit"/>
-</form>
+<main>
+    <form action="#" th:action="@{/dishes/save}" th:object="${dish}" th:method="post" class="form">
+        <input type="hidden" th:field="*{id}"/>
+        <div>
+            <label class="form_label" for="name">Dish Name:</label>
+            <input class="form_input" type="text" id="name" th:field="*{name}" required/>
+        </div>
+        <div>
+            <label class="form_label" for="price">Price:</label>
+            <input class="form_input" type="number" id="price" th:field="*{price}" required/>
+        </div>
+        <div>
+            <label class="form_label" for="description">Description:</label>
+            <textarea class="form_input" id="description" th:field="*{description}" required minlength="5" maxlength="100"></textarea>
+        </div>
+        <div>
+            <label class="form_label" for="image">Image:</label>
+            <input type="file" id="image" accept="image/.png,.jpg," th:field="*{image}" required/>
+        </div>
+        <button type="submit" class="btn">Save</button>
+    </form>
+</main>
 <div th:include="fragments/footer::footer"></div>
 </body>
 </html>

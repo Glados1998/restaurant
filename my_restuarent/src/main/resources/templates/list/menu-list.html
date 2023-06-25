@@ -7,14 +7,21 @@
 </head>
 <body>
 <div th:include="fragments/navbar::navbar"></div>
-<div th:include="fragments/dashboard-navbar::dashboard-navbar"></div>
-
-<div class="list">
-    <div th:each="menu : ${menus}" class="menu-preview">
-        <div th:text="${menu.name}"></div>
-        <a th:href="@{/menus/{id}(id=${menu.id})}">Show</a>
+<main class="dashboard-grid">
+    <div th:include="fragments/dashboard-navbar::dashboard-navbar"></div>
+    <div class="list">
+        <div class="list_header">
+            <h3>Menus:</h3>
+            <a class="btn" th:href="@{/menus/add}">Ajouter un menu</a>
+        </div>
+        <div class="list_column">
+            <div th:each="menu : ${menus}" class="list_column_element">
+                <h4 th:text="${menu.name}"></h4>
+                <a class="btn" th:href="@{/menus/{id}(id=${menu.id})}">Show</a>
+            </div>
+        </div>
     </div>
-</div>
+</main>
 <div th:include="fragments/footer::footer"></div>
 </body>
 </html>

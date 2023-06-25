@@ -7,12 +7,17 @@
 
 </head>
 <body>
-<h1>Add/Edit Card</h1>
-<form action="#" th:action="@{/cards/save}" th:object="${card}" th:method="post">
-    <input type="hidden" th:field="*{id}"/>
-    <label for="name">Card Name:</label>
-    <input type="text" id="name" th:field="*{name}" required/>
-    <input type="submit" value="Submit"/>
-</form>
+<div th:include="fragments/navbar::navbar"></div>
+<main>
+    <form action="#" th:action="@{/cards/save}" th:object="${card}" th:method="post" class="form">
+        <input type="hidden" th:field="*{id}"/>
+        <div>
+            <label class="form_label" for="name">Card Name:</label>
+            <input class="form_input" type="text" id="name" th:field="*{name}" required/>
+        </div>
+        <button type="submit" class="btn-success">Save</button>
+    </form>
+</main>
+<div th:include="fragments/footer::footer"></div>
 </body>
 </html>

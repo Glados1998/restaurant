@@ -22,11 +22,8 @@ class RestaurantController(
         return "index" // the name of the Thymeleaf template
     }
 
-    @GetMapping("/card/{id}")
-    fun card(@PathVariable id: Long, model: Model): String {
-        val restaurant = restaurantService.findById(id)
-        model.addAttribute("restaurant", restaurant)
-        // Assuming you have methods in your service to fetch the card, dishes, and menus
+    @GetMapping("/card")
+    fun card(model: Model): String {
         model.addAttribute("card", restaurantService.findCard())
         model.addAttribute("menus", restaurantService.findAllMenus())
         model.addAttribute("dishes", restaurantService.findAllDishes())
@@ -109,7 +106,7 @@ class RestaurantController(
             restaurantService.save(restaurant)
         }
 
-        return "redirect:/restaurant/settings" // you can redirect to wherever you want upon successful save
+        return "redirect:/restaurant/settings"
     }
 
 

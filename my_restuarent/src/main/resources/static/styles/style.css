@@ -79,35 +79,53 @@
   display: grid;
   gap: 1rem;
   grid-auto-flow: column;
-  grid-auto-columns: min-content;
+  grid-auto-columns: max-content;
 }
 .header_nav_bar_link {
   width: fit-content;
   list-style: none;
 }
-.header_nav_bar_link_item {
+.header_nav_bar_link_item:link, .header_nav_bar_link_item:visited {
   text-underline: none;
+  color: inherit;
 }
 
 .dashboard {
   padding: 1rem;
-  border: 1px solid #212121;
   border-radius: 0.25rem;
   width: fit-content;
   height: fit-content;
+  box-shadow: 0 0 0.5rem 0.25rem rgba(0, 0, 0, 0.25);
+}
+.dashboard_header {
+  margin-top: 0;
+  text-align: center;
 }
 .dashboard_nav {
   display: grid;
   grid-auto-flow: row;
-  grid-auto-rows: min-content;
-  gap: 0.5rem;
+  grid-auto-rows: max-content;
+  gap: 1rem;
   align-items: center;
   justify-content: center;
   list-style: none;
   margin: 0;
   padding: 0;
-  text-align: center;
+  width: 12rem;
 }
+.dashboard_nav_link {
+  width: 100%;
+  text-align: center;
+  list-style: none;
+}
+.dashboard_nav_link_item:link, .dashboard_nav_link_item:visited {
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.5rem;
+  text-underline: none;
+  color: inherit;
+}
+
 .form {
   display: grid;
   gap: 1rem;
@@ -157,17 +175,19 @@ a:link, a:visited {
   display: grid;
   gap: 4rem;
   grid-auto-flow: column;
-  grid-auto-columns: min-content;
-  position: relative;
+  grid-auto-columns: max-content;
+  position: absolute;
   width: 100%;
   bottom: 0;
   margin: 0;
   padding: 1rem;
 }
 .footer_container {
-  padding: 1.5rem;
   width: 100%;
   max-width: 10rem;
+}
+.footer_container a {
+  color: inherit;
 }
 
 .grid_2-3 {
@@ -199,6 +219,37 @@ a:link, a:visited {
   grid-template-rows: repeat(1, auto);
   justify-content: center;
   align-items: center;
+}
+
+.dashboard-grid {
+  display: grid;
+  gap: 8rem;
+  grid-auto-flow: column;
+  grid-auto-columns: max-content;
+  justify-content: center;
+  align-items: center;
+}
+
+.list {
+  display: grid;
+  gap: 1rem;
+  grid-auto-flow: row;
+}
+.list_header {
+  margin-bottom: 10px;
+}
+.list_column {
+  display: grid;
+  gap: 1rem;
+  grid-auto-flow: row;
+  max-height: 20rem;
+  overflow: auto;
+}
+.list_column_element {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 0.25rem;
+  padding: 2rem;
 }
 
 /*# sourceMappingURL=style.css.map */

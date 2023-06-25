@@ -8,13 +8,21 @@
 </head>
 <body>
 <div th:include="fragments/navbar::navbar"></div>
-<div th:include="fragments/dashboard-navbar::dashboard-navbar"></div>
-<div class="list">
-    <div th:each="card : ${cards}" class="card-preview">
-        <div th:text="${card.name}"></div>
-        <a th:href="@{/cards/{id}(id=${card.id})}">Show</a>
+<main class="dashboard-grid">
+    <div th:include="fragments/dashboard-navbar::dashboard-navbar"></div>
+    <div class="list">
+        <div class="list_header">
+            <h3>Cartes:</h3>
+            <a class="btn" th:href="@{/cards/add}">Ajouter une carte</a>
+        </div>
+        <div class="list_column">
+            <div th:each="card : ${cards}" class="list_column_element">
+                <h3>Nom de la carte: <span th:text="${card.name}"></span></h3>
+                <a class="btn" th:href="@{/cards/{id}(id=${card.id})}">Details</a>
+            </div>
+        </div>
     </div>
-</div>
+</main>
 <div th:include="fragments/footer::footer"></div>
 </body>
 </html>

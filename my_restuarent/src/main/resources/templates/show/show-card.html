@@ -12,8 +12,8 @@
         <h2 class="dish-title" th:text="${card.name}">Title</h2>
     </div>
     <div class="card_footer">
-        <a th:href="@{/cards/all}">Back to list</a>
-        <a th:href="@{/cards/{id}/addDish(id=${card.id})}">Add dish to card</a>
+        <a class="btn" th:href="@{/cards/all}">Back to list</a>
+        <a class="btn-success" th:href="@{/cards/{id}/addDish(id=${card.id})}">Add dish to card</a>
     </div>
 </div>
 <div th:include="fragments/footer::footer"></div>

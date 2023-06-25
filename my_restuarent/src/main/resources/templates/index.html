@@ -7,11 +7,10 @@
 <body>
 <div th:include="fragments/navbar::navbar"></div>
 <main>
-    <div class="intro">
-
-        <div class="intro_text">
-            <h1>Welcome to my <span th:text="${restaurant?.name ?: 'My Restaurant'}"></span></h1>
-            <h3>witness the best what <br> the gastronomy has to offer.</h3>
+    <div class="landing-page">
+        <div class="landing-page_text">
+            <h1>Bienvenue chez <span th:text="${restaurant?.name ?: 'Mon Restaurant'}"></span></h1>
+            <h3>Découvrez le meilleur de ce que la gastronomie a à offrir.</h3>
         </div>
     </div>
 </main>
