@@ -1,21 +1,21 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <div th:fragment="dashboard-navbar">
-    <nav class="dashboard" th:style="'background-color:' + ${restaurant.mainColor} + '; color:' + ${restaurant.fontColor}">
-        <div class="dashboard_header">
+    <nav class="vertical-navbar" th:style="'background-color:' + ${restaurant.mainColor} + '; color:' + ${restaurant.fontColor}">
+        <div class="vertical-navbar_header">
             <h3>Tableau de bord</h3>
         </div>
-        <ul class="dashboard_nav">
-            <li class="dashboard_nav_link">
-                <a class="dashboard_nav_link_item" th:href="@{/cards/all}">Cart</a>
+        <ul class="vertical-navbar_nav">
+            <li class="vertical-navbar_nav_link">
+                <a class="vertical-navbar_nav_link_item" th:href="@{/cards/all}">Cart</a>
             </li>
-            <li class="dashboard_nav_link">
-                <a class="dashboard_nav_link_item" th:href="@{/menus/all}">Menus</a>
+            <li class="vertical-navbar_nav_link">
+                <a class="vertical-navbar_nav_link_item" th:href="@{/menus/all}">Menus</a>
             </li>
-            <li class="dashboard_nav_link">
-                <a class="dashboard_nav_link_item" th:href="@{/dishes/all}">Plats</a>
+            <li class="vertical-navbar_nav_link">
+                <a class="vertical-navbar_nav_link_item" th:href="@{/dishes/all}">Plats</a>
             </li>
-            <li class="dashboard_nav_link">
-                <a class="dashboard_nav_link_item" th:href="@{/restaurant/settings}">Paramètres</a>
+            <li class="vertical-navbar_nav_link">
+                <a class="vertical-navbar_nav_link_item" th:href="@{/restaurant/settings}">Paramètres</a>
             </li>
         </ul>
     </nav>

@@ -9,7 +9,26 @@
 <body>
 <div th:include="fragments/navbar::navbar"></div>
 <main>
-    about
+    <div class="about">
+        <h2 class="about_header">Découvrez les chefs-d'œuvre de la cuisine <br> chez <span
+                th:text="${restaurant.name}"></span>.</h2>
+        <div class="about_content">
+            <div class="about_content_description">
+                <p th:text="${restaurant.description}">Aucune description disponible.</p>
+            </div>
+            <div class="about_content_image-row">
+                <img th:src="@{/images/restaurant.jpg}" alt="restaurant" class="about_content_image">
+                <img th:src="@{/images/restaurant2.jpg}" alt="restaurant" class="about_content_image">
+                <img th:src="@{/images/restaurant3.jpg}" alt="restaurant" class="about_content_image">
+            </div>
+            <div class="about_links">
+                <p class="about_links_description">Découvrez notre menu exceptionnel <br> et régalez-vous avec nos
+                    créations culinaires uniques.</p>
+                <a th:href="@{/restaurant/card}" class="about_links_link">Menu</a>
+                <!--                <a th:href="@{/reservation}" class="about_links_link">Reservation</a>-->
+            </div>
+        </div>
+    </div>
 </main>
 <div th:include="fragments/footer::footer"></div>
 </body>

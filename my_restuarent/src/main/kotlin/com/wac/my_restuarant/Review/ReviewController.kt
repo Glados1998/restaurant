@@ -1,4 +1,4 @@
-package com.wac.my_restuarant.Persona
+package com.wac.my_restuarant.Review
 
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity

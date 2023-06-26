@@ -69,6 +69,7 @@
   padding: 1rem;
   display: grid;
   grid-template-columns: auto 1fr;
+  width: 100%;
 }
 .header_nav .logo {
   place-self: center start;
@@ -90,18 +91,18 @@
   color: inherit;
 }
 
-.dashboard {
+.vertical-navbar {
   padding: 1rem;
   border-radius: 0.25rem;
   width: fit-content;
   height: fit-content;
   box-shadow: 0 0 0.5rem 0.25rem rgba(0, 0, 0, 0.25);
 }
-.dashboard_header {
+.vertical-navbar_header {
   margin-top: 0;
   text-align: center;
 }
-.dashboard_nav {
+.vertical-navbar_nav {
   display: grid;
   grid-auto-flow: row;
   grid-auto-rows: max-content;
@@ -113,12 +114,12 @@
   padding: 0;
   width: 12rem;
 }
-.dashboard_nav_link {
+.vertical-navbar_nav_link {
   width: 100%;
   text-align: center;
   list-style: none;
 }
-.dashboard_nav_link_item:link, .dashboard_nav_link_item:visited {
+.vertical-navbar_nav_link_item:link, .vertical-navbar_nav_link_item:visited {
   font-size: 1rem;
   font-weight: 600;
   padding: 0.5rem;
@@ -165,6 +166,7 @@ body {
 
 main {
   padding: 2rem;
+  height: 100%;
 }
 
 a:link, a:visited {
@@ -173,7 +175,7 @@ a:link, a:visited {
 
 .footer {
   display: grid;
-  gap: 4rem;
+  gap: 2rem;
   grid-auto-flow: column;
   grid-auto-columns: max-content;
   position: absolute;
@@ -185,6 +187,9 @@ a:link, a:visited {
 .footer_container {
   width: 100%;
   max-width: 10rem;
+}
+.footer_container h3 {
+  margin-top: 0;
 }
 .footer_container a {
   color: inherit;
@@ -221,7 +226,7 @@ a:link, a:visited {
   align-items: center;
 }
 
-.dashboard-grid {
+.column-grid {
   display: grid;
   gap: 8rem;
   grid-auto-flow: column;
@@ -250,6 +255,88 @@ a:link, a:visited {
   margin-bottom: 10px;
   border-radius: 0.25rem;
   padding: 2rem;
+}
+
+.about {
+  text-align: center;
+}
+.about_header {
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+.about_header span {
+  text-decoration: none;
+}
+.about_header span:hover {
+  text-decoration: underline;
+}
+.about_content {
+  display: grid;
+  align-content: center;
+  justify-content: center;
+}
+.about_content_description {
+  place-self: center;
+  max-width: 20rem;
+  line-break: auto;
+}
+.about_content_image-row {
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+  display: grid;
+  gap: 2rem;
+  grid-auto-flow: column;
+  grid-auto-columns: max-content;
+  justify-content: center;
+  align-items: center;
+}
+.about_content_image-row img {
+  width: 300px;
+  height: 250px;
+  border-radius: 0.5rem;
+  transition: all 1s ease-in-out;
+  object-fit: cover;
+}
+.about_content_image-row img:hover {
+  transition: all 1s ease-in-out;
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.index {
+  display: grid;
+  gap: 2rem;
+  text-align: center;
+}
+.index_top {
+  display: grid;
+  gap: 2rem;
+}
+.index_top_header span {
+  text-decoration: none;
+}
+.index_top_header span:hover {
+  text-decoration: underline;
+}
+
+.login {
+  padding: 0;
+  display: grid;
+  gap: 2rem;
+  text-align: center;
+  grid-auto-flow: column;
+  grid-template-columns: 1fr auto;
+}
+.login_side {
+  place-self: center;
+}
+.login_image {
+  place-self: center;
+}
+.login_image img {
+  width: auto;
+  height: 650px;
+  object-fit: cover;
 }
 
 /*# sourceMappingURL=style.css.map */

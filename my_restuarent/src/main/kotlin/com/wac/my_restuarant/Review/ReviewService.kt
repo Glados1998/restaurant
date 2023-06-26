@@ -1,4 +1,4 @@
-package com.wac.my_restuarant.Persona
+package com.wac.my_restuarant.Review
 
 import org.springframework.stereotype.Service
 
@@ -14,9 +14,12 @@ class ReviewService(private val reviewRepository: ReviewRepository) {
     fun deleteById(id: Long) = reviewRepository.deleteById(id)
 
     fun edit (id: Long, review: Review): Review {
-        val adminToEdit = findById(id)
-        adminToEdit.name = review.name
-        adminToEdit.password = review.password
-        return save(adminToEdit)
+        val reviewToEdit = findById(id)
+        reviewToEdit.author = review.author
+        reviewToEdit.rating = review.rating
+        reviewToEdit.comment = review.comment
+        reviewToEdit.createdAt = review.createdAt
+        reviewToEdit.updatedAt = review.updatedAt
+        return save(reviewToEdit)
     }
 }

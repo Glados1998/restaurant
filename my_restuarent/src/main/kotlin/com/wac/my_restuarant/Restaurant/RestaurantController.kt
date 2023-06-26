@@ -16,9 +16,7 @@ class RestaurantController(
 ) {
 
     @GetMapping("/")
-    fun index(model: Model): String {
-        val restaurant = restaurantService.getRestaurant()
-        model.addAttribute("restaurant", restaurant)
+    fun index(): String {
         return "index" // the name of the Thymeleaf template
     }
 

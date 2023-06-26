@@ -1,16 +1,21 @@
-package com.wac.my_restuarant.Persona
+package com.wac.my_restuarant.Review
 
-import jakarta.persistence.Entity
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType
-import jakarta.persistence.Id
+import com.wac.my_restuarant.Dish.Dish
+import jakarta.persistence.*
 
 @Entity
-data class Review (
+data class Review(
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     val id: Long = 0,
-    var name: String = "",
-    var password: String = "",
+    var author: String = "",
+    var rating: Int = 0,
+    var comment: String = "",
+    var createdAt: String = "",
+    var updatedAt: String = "",
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "card_id")
+    var dish: Dish? = null,
 )
