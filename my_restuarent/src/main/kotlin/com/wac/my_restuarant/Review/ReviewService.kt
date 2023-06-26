@@ -15,8 +15,9 @@ class ReviewService(private val reviewRepository: ReviewRepository) {
 
     fun edit (id: Long, review: Review): Review {
         val reviewToEdit = findById(id)
-        reviewToEdit.author = review.author
-        reviewToEdit.rating = review.rating
+        reviewToEdit.authorFirstName = review.authorFirstName
+        reviewToEdit.authorLastName = review.authorLastName
+//        reviewToEdit.rating = review.rating
         reviewToEdit.comment = review.comment
         reviewToEdit.createdAt = review.createdAt
         reviewToEdit.updatedAt = review.updatedAt

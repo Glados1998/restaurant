@@ -11,10 +11,13 @@
     <div class="index_top">
         <div class="index_header">
             <h1>Bienvenue chez <span th:text="${restaurant?.name ?: 'Mon Restaurant'}"></span></h1>
-            <h3>Découvrez le meilleur de ce que la gastronomie a à offrir.</h3>
+            <h3>Découvrez le meilleur <br> de la gastronomie.</h3>
+            <p>Vivez une expérience culinaire exceptionnelle. <br>
+                Des plats savoureux préparés avec soin par nos talentueux chefs. <br>
+                Des ingrédients frais et de saison sublimés pour une explosion de saveurs.</p>
         </div>
         <div class="index_content">
-
+            <div th:include="fragments/review-form::review-form"></div>
         </div>
     </div>
 </main>

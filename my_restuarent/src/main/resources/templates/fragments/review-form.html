@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<div th:fragment="review-form">
+    <div class="review">
+        <h3>Write a review</h3>
+        <form th:action="@{/reviews/save}" class="form" th:object="${review}" th:method="post">
+<!--            <input type="hidden" th:field="*{id}"/>-->
+            <div class="grid_1-2">
+                <div>
+                    <label for="authorFirstName" class="form_label">
+                        Nom:
+                    </label>
+                    <input type="text" class="form_input" id="authorFirstName" name="authorFirstName">
+<!--                           th:field="*{authorFirstName}">-->
+                </div>
+                <div>
+                    <label for="authorLastName" class="form_label">
+                        Prénom:
+                    </label>
+                    <input type="text" class="form_input" id="authorLastName" name="authorLastName">
+<!--                           th:field="*{authorLastName}">-->
+                </div>
+            </div>
+            <div>
+                <label for="comment" class="form_label">
+                    Commentaire:
+                </label>
+                <textarea class="form_input" id="comment" name="comment"></textarea>
+            </div>
+            <div class="grid_1-2">
+                <button type="submit" class="btn-success">Save review</button>
+                <button type="reset" class="btn-danger">Reset review</button>
+            </div>
+        </form>
+    </div>
+</div>
+</html>

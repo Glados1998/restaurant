@@ -220,8 +220,8 @@ a:link, a:visited {
 .grid_2-1 {
   gap: 1rem;
   display: grid;
-  grid-template-columns: repeat(2, auto);
-  grid-template-rows: repeat(1, auto);
+  grid-template-columns: repeat(1, auto);
+  grid-template-rows: repeat(2, auto);
   justify-content: center;
   align-items: center;
 }

@@ -1,8 +1,10 @@
 package com.wac.my_restuarant.Review
 
+import com.wac.my_restuarant.Card.Card
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Controller
+import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.*
 
 @Controller
@@ -23,9 +25,15 @@ class ReviewController(private val reviewService: ReviewService) {
         }
     }
 
-    @PostMapping
+    @PostMapping("/save")
     fun create(@RequestBody review: Review): ResponseEntity<Review> {
         return ResponseEntity.ok(reviewService.save(review))
+    }
+
+    @GetMapping
+    fun initForm(model: Model): String {
+        model.addAttribute("review", Review())
+        return "fragments/review-form"
     }
 
     @DeleteMapping("/{id}/delete")

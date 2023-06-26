@@ -1,6 +1,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <div th:fragment="footer">
-    <footer class="footer" th:style="'background-color:' + ${restaurant.mainColor} + '; color:' + ${restaurant.fontColor}">
+    <footer class="footer"
+            th:style="'background-color:' + ${restaurant.mainColor} + '; color:' + ${restaurant.fontColor}">
         <div class="footer_container">
             <h3><span th:text="${restaurant?.name ?: 'Mon Restaurant'}"></span></h3>
             <p>Tous droits réservés</p>
@@ -9,9 +10,14 @@
         </div>
         <div class="footer_container">
             <h3>Contact :</h3>
-            <p>Adresse : <span th:text="${restaurant?.streetAddress ?: 'Inconnue'}"></span> <span th:text="${restaurant?.streetNumber ?: 'Inconnu'}"></span>, <span th:text="${restaurant?.city ?: 'Inconnue'}"></span>, <span th:text="${restaurant?.postalCode ?: 'Inconnu'}"></span></p>
-            <p>Téléphone : <span th:text="${restaurant?.phone ?: 'Inconnu'}"></span></p>
-            <p>Email : <span th:text="${restaurant?.email ?: 'Inconnu'}"></span></p>
+            <address>
+                <p>Adresse : <span th:text="${restaurant?.streetAddress ?: 'Inconnue'}"></span> <span
+                        th:text="${restaurant?.streetNumber ?: 'Inconnu'}"></span>, <span
+                        th:text="${restaurant?.city ?: 'Inconnue'}"></span>, <span
+                        th:text="${restaurant?.postalCode ?: 'Inconnu'}"></span></p>
+                <p>Téléphone : <span th:text="${restaurant?.phone ?: 'Inconnu'}"></span></p>
+                <p>Email : <span th:text="${restaurant?.email ?: 'Inconnu'}"></span></p>
+            </address>
         </div>
     </footer>
 </div>
