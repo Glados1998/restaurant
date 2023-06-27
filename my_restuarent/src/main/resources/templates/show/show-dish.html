@@ -4,22 +4,58 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="/styles/style.css">
+    <script src="/js/script.js"></script>
 </head>
 <body>
 <div th:include="fragments/navbar::navbar"></div>
-<main>
-    <div class="card">
-        <div class="card_header">
+<main class="show">
+    <div class="show_side">
+        <div class="show_side_header">
             <h2 class="dish-title" th:text="${dish.name}">Title</h2>
             <p class="dish-price">Euros: <b th:text="${dish.price}">Undefined</b></p>
         </div>
-        <div class="card_body">
-            <img th:src="${dish.image}"/>
+        <div class="show_side_body">
             <p th:text="${dish.description}"></p>
         </div>
-        <div class="card_footer">
+        <div class="show_side_footer">
             <a class="btn" th:href="@{/dishes/all}">Back to list</a>
+            <button onclick="toggleForm()" class="btn">Make review</button>
         </div>
+        <div class="review" id="review-form">
+            <h3>Write a review</h3>
+            <form th:action="@{/reviews/save}" class="form" th:object="${review}" th:method="post">
+                <input type="hidden" th:field="*{dish.id}"/>
+                <div class="grid_1-2">
+                    <div>
+                        <label for="authorFirstName" class="form_label">
+                            Nom:
+                        </label>
+                        <input type="text" class="form_input" id="authorFirstName" name="authorFirstName"
+                               th:field="*{authorFirstName}">
+                    </div>
+                    <div>
+                        <label for="authorLastName" class="form_label">
+                            Prénom:
+                        </label>
+                        <input type="text" class="form_input" id="authorLastName" name="authorLastName"
+                               th:field="*{authorLastName}">
+                    </div>
+                </div>
+                <div>
+                    <label for="comment" class="form_label">
+                        Commentaire:
+                    </label>
+                    <textarea class="form_input" id="comment" name="comment"></textarea>
+                </div>
+                <div class="grid_1-2">
+                    <button type="submit" class="btn-success">Save review</button>
+                    <button type="reset" class="btn-danger">Reset review</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div>
+        <img th:src="${dish.image}"/>
     </div>
 </main>
 <div th:include="fragments/footer::footer"></div>

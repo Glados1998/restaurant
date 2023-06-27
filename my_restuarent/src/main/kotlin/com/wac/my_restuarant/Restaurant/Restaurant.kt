@@ -20,6 +20,8 @@ data class Restaurant(
     var secondaryColor: String = "",
     var fontColor: String = "",
     var linkColor : String = "",
-    var headerImage: String = "",
+    var imagePath: String = "",
     var description: String = ""
-)
+) {
+
+}

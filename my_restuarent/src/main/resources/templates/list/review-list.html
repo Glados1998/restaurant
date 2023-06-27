@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title th:text="${restaurant?.name + ' - review' ?: 'Mon Restaurant'}"></title>
     <link rel="stylesheet" href="/styles/style.css">
 </head>
 <body>
@@ -10,8 +10,7 @@
 <main class="column-grid">
     <div class="list">
         <div class="list_header">
-            <h3>Menus:</h3>
-            <a class="btn" th:href="@{/menus/add}">Ajouter un menu</a>
+            <h3>Reviews:</h3>
         </div>
         <div class="list_column">
             <div th:each="menu : ${menus}" class="list_column_element">

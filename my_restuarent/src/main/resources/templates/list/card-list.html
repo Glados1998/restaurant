@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title th:text="${restaurant?.name + ' - list card' ?: 'Mon Restaurant'}"></title>
     <link rel="stylesheet" href="/styles/style.css">
 
 </head>
@@ -13,7 +13,7 @@
     <div class="list">
         <div class="list_header">
             <h3>Cartes:</h3>
-            <a class="btn" th:href="@{/cards/add}">Ajouter une carte</a>
+            <a class="btn" th:if="${session.admin != null}" th:href="@{/cards/add}">Ajouter une carte</a>
         </div>
         <div class="list_column">
             <div th:each="card : ${cards}" class="list_column_element">

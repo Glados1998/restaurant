@@ -22,14 +22,14 @@ a:link, a:visited {
   gap: 2rem;
   grid-auto-flow: column;
   grid-auto-columns: max-content;
-  position: absolute;
+  position: relative;
   width: 100%;
   bottom: 0;
   margin: 0;
   padding: 1rem;
 
   &_container {
-    h3 {
+    h5 {
       margin-top: 0;
     }
 
@@ -208,5 +208,41 @@ a:link, a:visited {
       height: 650px;
       object-fit: cover;
     }
+  }
+}
+
+.review {
+  display: none;
+}
+
+.show-form {
+  display: block;
+}
+
+.show {
+  padding: 0;
+  display: grid;
+  gap: 2rem;
+  text-align: center;
+  grid-auto-flow: column;
+  grid-template-columns: 1fr auto;
+
+  &_show_side {
+    place-self: start center;
+  }
+}
+
+.index {
+  padding: 0;
+
+  &_top {
+    &_header {
+      img {
+        width: 100%;
+        height: 450px;
+        object-fit: cover;
+      }
+    }
+    &_content {}
   }
 }

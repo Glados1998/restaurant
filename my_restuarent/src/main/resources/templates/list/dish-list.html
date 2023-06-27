@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title th:text="${restaurant?.name + ' - list plats' ?: 'Mon Restaurant'}"></title>
     <link rel="stylesheet" href="/styles/style.css">
 </head>
 <body>
@@ -13,13 +13,15 @@
 <div class="list">
     <div class="list_header">
         <h3>Plats:</h3>
-        <a class="btn" th:href="@{/dishes/add}">Ajouter un plat</a>
+        <a class="btn" th:if="${session.admin != null}" th:href="@{/dishes/add}">Ajouter un plat</a>
     </div>
     <div class="list_column">
         <div th:each="dish : ${dishes}" class="list_column_element">
-            <h3 th:text="${dish.name}"></h3>
-            <p>Euro:<span th:text="${dish.price}"></span></p>
-            <a class="btn" th:href="@{/dishes/{id}(id=${dish.id})}">Show</a>
+            <div>
+                <h3 th:text="${dish.name}"></h3>
+                <p>Euro:<span th:text="${dish.price}"></span></p>
+                <a class="btn" th:href="@{/dishes/{id}(id=${dish.id})}">Show</a>
+            </div>
         </div>
     </div>
 </div>

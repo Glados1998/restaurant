@@ -17,7 +17,7 @@
             <h3>Paramètres du restaurant</h3>
         </div>
         <form action="#" th:action="@{/restaurant/settings/save}" th:object="${restaurant}" method="post"
-              class="settings_form form">
+              class="settings_form form" enctype="multipart/form-data">
             <div class="grid_2-3">
                 <div class="settings_form_container">
                     <label class="form_label" for="name">Nom :</label>
@@ -81,7 +81,7 @@
             <div class="grid_2-1">
                 <div class="settings_form_container">
                     <label class="form_label" for="headerImage">Image d'en-tête :</label>
-                    <input type="file" id="headerImage" th:field="*{headerImage}"/>
+                    <input type="file" id="headerImage" name="headerImage"/>
                 </div>
                 <div class="settings_form_container">
                     <label class="form_label" for="description">Description :</label>

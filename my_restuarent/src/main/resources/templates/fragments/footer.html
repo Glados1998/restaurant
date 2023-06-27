@@ -3,13 +3,13 @@
     <footer class="footer"
             th:style="'background-color:' + ${restaurant.mainColor} + '; color:' + ${restaurant.fontColor}">
         <div class="footer_container">
-            <h3><span th:text="${restaurant?.name ?: 'Mon Restaurant'}"></span></h3>
+            <h5><span th:text="${restaurant?.name ?: 'Mon Restaurant'}"></span></h5>
             <p>Tous droits réservés</p>
             <p>Développé par <a href="https://www.linkedin.com/in/jerome-greder/" target="_blank">Jérôme Greder</a></p>
             <p>Avec Jetbrains <br> IntelliJ IDEA</p>
         </div>
         <div class="footer_container">
-            <h3>Contact :</h3>
+            <h5>Contact :</h5>
             <address>
                 <p>Adresse : <span th:text="${restaurant?.streetAddress ?: 'Inconnue'}"></span> <span
                         th:text="${restaurant?.streetNumber ?: 'Inconnu'}"></span>, <span

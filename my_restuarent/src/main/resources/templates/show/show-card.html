@@ -7,15 +7,18 @@
 </head>
 <body>
 <div th:include="fragments/navbar::navbar"></div>
-<div class="card">
-    <div class="card_header">
-        <h2 class="dish-title" th:text="${card.name}">Title</h2>
+<main>
+    <div class="card">
+        <div class="card_header">
+            <h2 class="dish-title" th:text="${card.name}">Title</h2>
+        </div>
+        <div class="card_footer">
+            <a class="btn" th:href="@{/cards/all}">Back to list</a>
+            <a class="btn-success" th:if="${session.admin != null}" th:href="@{/cards/{id}/addDish(id=${card.id})}">Add
+                dish to card</a>
+        </div>
     </div>
-    <div class="card_footer">
-        <a class="btn" th:href="@{/cards/all}">Back to list</a>
-        <a class="btn-success" th:href="@{/cards/{id}/addDish(id=${card.id})}">Add dish to card</a>
-    </div>
-</div>
+</main>
 <div th:include="fragments/footer::footer"></div>
 </body>
 </html>

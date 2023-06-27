@@ -14,7 +14,8 @@
 
     <div class="card_footer">
         <a class="btn" th:href="@{/menus/all}">Back to list</a>
-        <a class="btn-success" th:href="@{/menus/{id}/addDish(id=${menu.id})}">Add dish to menu</a>
+        <a class="btn-success" th:if="${session.admin != null}" th:href="@{/menus/{id}/addDish(id=${menu.id})}">Add dish
+            to menu</a>
     </div>
 </div>
 <div th:include="fragments/footer::footer"></div>

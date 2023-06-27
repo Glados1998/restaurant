@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title th:text="${restaurant?.name + ' - a propos' ?: 'Mon Restaurant'}"></title>
     <link rel="stylesheet" href="/styles/style.css">
 
 </head>

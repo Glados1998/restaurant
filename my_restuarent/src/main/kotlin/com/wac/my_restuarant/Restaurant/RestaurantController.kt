@@ -1,12 +1,21 @@
 package com.wac.my_restuarant.Restaurant
 
 import jakarta.servlet.http.HttpSession
+import org.apache.commons.io.FilenameUtils
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.validation.BindingResult
 import org.springframework.web.bind.annotation.*
+import org.springframework.web.multipart.MultipartFile
+import java.io.IOException
+import java.nio.file.Files
+import java.nio.file.Paths
+import java.nio.file.StandardCopyOption
+import java.nio.file.StandardOpenOption
+import java.util.*
+import kotlin.NoSuchElementException
 
 @Controller
 @RequestMapping("/restaurant")
@@ -79,10 +88,25 @@ class RestaurantController(
     }
 
     @PostMapping("/settings/save")
-    fun restaurantSettings(@ModelAttribute restaurant: Restaurant, bindingResult: BindingResult, model: Model): String {
+    fun restaurantSettings(
+        @ModelAttribute restaurant: Restaurant, bindingResult: BindingResult,
+        @RequestParam("headerImage") headerImageFile: MultipartFile, model: Model
+    ): String {
         if (bindingResult.hasErrors()) {
             return "admin/restaurant-settings"
         }
+        if (!headerImageFile.isEmpty) {
+            val filename = "header-image." + FilenameUtils.getExtension(headerImageFile.originalFilename)
+            val path = Paths.get("/Users/L/Desktop/Web.tmp/school/Wac_semestre_4/projet_en_solo/W-WEB-842-MLH-4-1-java-jerome-alexandre.greder/my_restuarent/src/main/resources/static/images/front/$filename")
+            restaurant.imagePath = filename
+            try {
+                Files.write(path, headerImageFile.bytes, StandardOpenOption.CREATE, StandardOpenOption.WRITE)
+            } catch (e: IOException) {
+                e.printStackTrace()
+                println("Error writing file: " + e.message)
+            }
+        }
+
         val existingRestaurant = restaurantService.getRestaurant()
         if (existingRestaurant != null) {
             existingRestaurant.name = restaurant.name
@@ -97,10 +121,21 @@ class RestaurantController(
             existingRestaurant.secondaryColor = restaurant.secondaryColor
             existingRestaurant.fontColor = restaurant.fontColor
             existingRestaurant.linkColor = restaurant.linkColor
-            existingRestaurant.headerImage = restaurant.headerImage
             existingRestaurant.description = restaurant.description
+            existingRestaurant.imagePath = restaurant.imagePath
             restaurantService.save(existingRestaurant)
         } else {
+            if (!headerImageFile.isEmpty) {
+                val filename = "header-image." + FilenameUtils.getExtension(headerImageFile.originalFilename)
+                val path = Paths.get("/Users/L/Desktop/Web.tmp/school/Wac_semestre_4/projet_en_solo/W-WEB-842-MLH-4-1-java-jerome-alexandre.greder/my_restuarent/src/main/resources/static/images/front/$filename")
+                restaurant.imagePath = filename
+                try {
+                    Files.write(path, headerImageFile.bytes, StandardOpenOption.CREATE, StandardOpenOption.WRITE)
+                } catch (e: IOException) {
+                    e.printStackTrace()
+                    println("Error writing file: " + e.message)
+                }
+            }
             restaurantService.save(restaurant)
         }
 
