@@ -19,6 +19,7 @@
         <div class="show_side_buttons">
             <a class="btn" th:href="@{/dishes/all}">Retour à la liste</a>
             <a href="#" onclick="toggleForm()" class="btn">Écrire un avis</a>
+            <a th:href="@{/dishes/edit/{id}(id=${dish.id})}" class="btn">Edit dish</a>
         </div>
         <div class="show_side_body">
             <p th:text="${dish.description}"></p>
@@ -27,21 +28,28 @@
         <div class="review" id="review-form">
             <h3>Rédiger un avis</h3>
             <form th:action="@{/reviews/save}" class="form" th:object="${review}" th:method="post">
-                <input type="hidden" th:field="*{dish.id}"/>
-                <div class="grid_1-2">
+                <input type="hidden" name="dishId" th:value="${dish.id}"/>
+                <div class="grid_1-3">
                     <div>
                         <label for="authorFirstName" class="form_label">
                             Nom :
                         </label>
                         <input type="text" class="form_input" id="authorFirstName" name="authorFirstName"
-                               th:field="*{authorFirstName}">
+                               th:field="*{authorFirstName}" required>
                     </div>
                     <div>
                         <label for="authorLastName" class="form_label">
                             Prénom :
                         </label>
                         <input type="text" class="form_input" id="authorLastName" name="authorLastName"
-                               th:field="*{authorLastName}">
+                               th:field="*{authorLastName}" required>
+                    </div>
+                    <div>
+                        <label for="email" class="form_label">
+                            Email :
+                        </label>
+                        <input type="email" class="form_input" id="email" name="email"
+                               th:field="*{email}">
                     </div>
                 </div>
                 <div>

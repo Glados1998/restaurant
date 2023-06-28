@@ -1,15 +1,19 @@
 package com.wac.my_restuarant.Review
 
-import com.wac.my_restuarant.Card.Card
+import com.wac.my_restuarant.Dish.DishService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Controller
-import org.springframework.ui.Model
+import org.springframework.validation.BindingResult
 import org.springframework.web.bind.annotation.*
+import java.time.LocalDate
 
 @Controller
 @RequestMapping("/reviews")
-class ReviewController(private val reviewService: ReviewService) {
+class ReviewController(
+    private val reviewService: ReviewService,
+    private val dishService: DishService
+) {
 
     @GetMapping("/all")
     fun findAll(): ResponseEntity<Iterable<Review>> {
@@ -26,14 +30,17 @@ class ReviewController(private val reviewService: ReviewService) {
     }
 
     @PostMapping("/save")
-    fun create(@RequestBody review: Review): ResponseEntity<Review> {
-        return ResponseEntity.ok(reviewService.save(review))
-    }
+    fun saveReview(
+        @ModelAttribute review: Review,
+        bindingResult: BindingResult,
+        @RequestParam("dishId") dishId: Long
+    ): String {
+        val dish = dishService.findById(dishId)
+        review.dish = dish
+        review.createdAt = LocalDate.now().toString()
+        reviewService.save(review)
 
-    @GetMapping
-    fun initForm(model: Model): String {
-        model.addAttribute("review", Review())
-        return "fragments/review-form"
+        return "redirect:/dishes/${dish.id}"
     }
 
     @DeleteMapping("/{id}/delete")
@@ -41,15 +48,6 @@ class ReviewController(private val reviewService: ReviewService) {
         return try {
             reviewService.deleteById(id)
             ResponseEntity(HttpStatus.NO_CONTENT)
-        } catch (e: NoSuchElementException) {
-            ResponseEntity(HttpStatus.NOT_FOUND)
-        }
-    }
-
-    @PutMapping("/{id}/edit")
-    fun edit(@PathVariable id: Long, @RequestBody review: Review): ResponseEntity<Review> {
-        return try {
-            ResponseEntity.ok(reviewService.edit(id, review))
         } catch (e: NoSuchElementException) {
             ResponseEntity(HttpStatus.NOT_FOUND)
         }

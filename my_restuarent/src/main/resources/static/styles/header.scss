@@ -5,7 +5,8 @@
   &_nav {
     padding: 1rem;
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-auto-flow: column;
+    grid-template-columns: max-content 1fr max-content;
     width: 100%;
 
     .logo {

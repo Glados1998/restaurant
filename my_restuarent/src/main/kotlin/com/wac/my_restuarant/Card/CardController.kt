@@ -55,15 +55,6 @@ class CardController(
         }
     }
 
-    @PutMapping("/{id}/edit")
-    fun edit(@PathVariable id: Long, @RequestBody card: Card): ResponseEntity<Card> {
-        return try {
-            ResponseEntity.ok(cardService.edit(id, card))
-        } catch (e: NoSuchElementException) {
-            ResponseEntity(HttpStatus.NOT_FOUND)
-        }
-    }
-
     @GetMapping("/{id}/addDish")
     fun addDishForm(@PathVariable id: Long, model: Model): String {
         val card = cardService.findById(id)

@@ -11,10 +11,9 @@ data class Review(
     val id: Long = 0,
     var authorFirstName: String = "",
     var authorLastName: String = "",
-//    var rating: Int = 0,
+    var email: String = "",
     var comment: String = "",
     var createdAt: String = "",
-    var updatedAt: String = "",
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "card_id")

@@ -76,6 +76,15 @@ a:link, a:visited {
     justify-content: center;
     align-items: center;
   }
+
+  &_1-3 {
+    gap: 1rem;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-template-rows: repeat(1, auto);
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 .column-grid {

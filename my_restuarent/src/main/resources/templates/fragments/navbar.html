@@ -15,6 +15,9 @@
             <li class="header_nav_bar_link" th:if="${session.admin != null}">
                 <a class="header_nav_bar_link_item" th:href="@{/restaurant/settings}">Tableau de bord</a>
             </li>
+        </ul>
+        <ul class="header_nav_bar_side">
+
             <li class="header_nav_bar_link" th:unless="${session.admin != null}">
                 <a class="header_nav_bar_link_item" th:href="@{/restaurant/login-page}">Connexion</a>
             </li>

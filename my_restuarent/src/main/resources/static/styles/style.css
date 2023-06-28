@@ -68,7 +68,8 @@
 .header_nav {
   padding: 1rem;
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-auto-flow: column;
+  grid-template-columns: max-content 1fr max-content;
   width: 100%;
 }
 .header_nav .logo {
@@ -222,6 +223,14 @@ a:link, a:visited {
   display: grid;
   grid-template-columns: repeat(1, auto);
   grid-template-rows: repeat(2, auto);
+  justify-content: center;
+  align-items: center;
+}
+.grid_1-3 {
+  gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-template-rows: repeat(1, auto);
   justify-content: center;
   align-items: center;
 }

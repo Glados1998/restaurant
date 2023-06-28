@@ -21,15 +21,14 @@
         </div>
         <div>
             <label class="form_label" for="description">Description:</label>
-            <textarea class="form_input" id="description" th:field="*{description}" required minlength="5" maxlength="100"></textarea>
+            <textarea class="form_input" id="description" th:field="*{description}" required minlength="5" maxlength="200"></textarea>
         </div>
         <div>
             <label class="form_label" for="image">Image:</label>
-            <input type="file" id="image" accept="image/png, image/jpeg" name="image" required/>
+            <input type="file" id="image" accept="image/png, image/jpeg" name="image"/>
         </div>
         <button type="submit" class="btn">Save</button>
     </form>
-
 </main>
 <div th:include="fragments/footer::footer"></div>
 </body>

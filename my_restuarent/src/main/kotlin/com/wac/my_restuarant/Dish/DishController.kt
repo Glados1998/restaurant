@@ -24,7 +24,7 @@ class DishController(private val dishService: DishService) {
         return "admin/add-edit-dish"
     }
 
-    @GetMapping("/{id}/edit")
+    @GetMapping("edit/{id}")
     fun editDishForm(@PathVariable id: Long, model: Model): String {
         val dish = dishService.findById(id)
         model.addAttribute("dish", dish)
@@ -75,15 +75,6 @@ class DishController(private val dishService: DishService) {
         return try {
             dishService.deleteById(id)
             ResponseEntity(HttpStatus.NO_CONTENT)
-        } catch (e: NoSuchElementException) {
-            ResponseEntity(HttpStatus.NOT_FOUND)
-        }
-    }
-
-    @PutMapping("/{id}/save/edit")
-    fun edit(@PathVariable id: Long, @RequestBody dish: Dish): ResponseEntity<Dish> {
-        return try {
-            ResponseEntity.ok(dishService.edit(id, dish))
         } catch (e: NoSuchElementException) {
             ResponseEntity(HttpStatus.NOT_FOUND)
         }
