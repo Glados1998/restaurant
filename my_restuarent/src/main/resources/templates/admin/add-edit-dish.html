@@ -9,7 +9,7 @@
 <body>
 <div th:include="fragments/navbar::navbar"></div>
 <main>
-    <form action="#" th:action="@{/dishes/save}" th:object="${dish}" th:method="post" class="form">
+    <form action="#" th:action="@{/dishes/save}" th:object="${dish}" th:method="post" class="form" enctype="multipart/form-data">
         <input type="hidden" th:field="*{id}"/>
         <div>
             <label class="form_label" for="name">Dish Name:</label>
@@ -25,10 +25,11 @@
         </div>
         <div>
             <label class="form_label" for="image">Image:</label>
-            <input type="file" id="image" accept="image/.png,.jpg," th:field="*{image}" required/>
+            <input type="file" id="image" accept="image/png, image/jpeg" name="image" required/>
         </div>
         <button type="submit" class="btn">Save</button>
     </form>
+
 </main>
 <div th:include="fragments/footer::footer"></div>
 </body>

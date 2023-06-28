@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
+import org.springframework.validation.BindingResult
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.multipart.MultipartFile
 import java.io.IOException
@@ -47,7 +48,11 @@ class DishController(private val dishService: DishService) {
 
 
     @PostMapping("/save")
-    fun create(@ModelAttribute dish: Dish, @RequestParam("dishImage") dishImageFile: MultipartFile): String {
+    fun create(
+        @ModelAttribute dish: Dish,
+        bindingResult: BindingResult,
+        @RequestParam("image") dishImageFile: MultipartFile
+    ): String {
         if (!dishImageFile.isEmpty) {
             val filename = "${dish.name}-image." + FilenameUtils.getExtension(dishImageFile.originalFilename)
             val path =
@@ -61,7 +66,7 @@ class DishController(private val dishService: DishService) {
             }
         }
         dishService.save(dish)
-        return "redirect:/admin/restaurant-dashboard"
+        return "redirect:/dishes/${dish.id}"
     }
 
 

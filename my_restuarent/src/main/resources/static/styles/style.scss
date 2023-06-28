@@ -222,13 +222,42 @@ a:link, a:visited {
 .show {
   padding: 0;
   display: grid;
-  gap: 2rem;
-  text-align: center;
+  text-align: left;
   grid-auto-flow: column;
   grid-template-columns: 1fr auto;
 
-  &_show_side {
-    place-self: start center;
+  &_side {
+    padding: 3rem;
+    overflow: auto;
+    height: 30rem;
+
+    &_header {
+    }
+
+    &_buttons {
+      display: grid;
+      gap: 1rem;
+      grid-auto-flow: column;
+      grid-auto-columns: max-content;
+
+      a {
+        margin: 0;
+      }
+    }
+
+    &_body {
+      height: fit-content;
+      overflow: auto;
+      margin-top: 2rem;
+    }
+  }
+
+  &_image {
+    img {
+      width: auto;
+      height: 650px;
+      object-fit: cover;
+    }
   }
 }
 
@@ -237,12 +266,18 @@ a:link, a:visited {
 
   &_top {
     &_header {
+      h1 {
+        margin-top: 0;
+      }
+
       img {
         width: 100%;
         height: 450px;
         object-fit: cover;
       }
     }
-    &_content {}
+
+    &_content {
+    }
   }
 }
