@@ -20,6 +20,23 @@
                 Des ingrédients frais et de saison sublimés pour une explosion de saveurs.</p>
         </div>
     </div>
+    <div class="index_content">
+        <div class="index_content_carrousel">
+            <div th:each="review : ${reviews}">
+                <div class="review_show-case" th:style="'background-color:' + ${restaurant.secondaryColor} + '; color:' + ${restaurant.fontColor}">
+                    <img th:src="@{/images/common/{filename}(filename=${review.dish.image})}"/>
+                    <div class="review_show-case_header">
+                        <h2 th:text="${review.dish.name}"></h2>
+                        <p>5 stars out of: <span th:text="${review.rating}"></span></p>
+                    </div>
+                    <div class="rating" th:attr="data-rating=${review.rating}">
+                    </div>
+                    <p><strong th:text="${review.authorFirstName} + ' ' + ${review.authorLastName}"></strong></p>
+                    <p th:text="${review.comment}"></p>
+                </div>
+            </div>
+        </div>
+    </div>
 </main>
 <div th:include="fragments/footer::footer"></div>
 </body>

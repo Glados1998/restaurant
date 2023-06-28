@@ -12,4 +12,7 @@ class ReviewService(private val reviewRepository: ReviewRepository) {
     fun save(review: Review): Review = reviewRepository.save(review)
 
     fun deleteById(id: Long) = reviewRepository.deleteById(id)
+
+    fun findTop4ByOrderByCreatedAtDesc(): List<Review> = reviewRepository.findTop4ByOrderByCreatedAtDesc()
+
 }

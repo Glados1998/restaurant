@@ -33,7 +33,8 @@ class ReviewController(
     fun saveReview(
         @ModelAttribute review: Review,
         bindingResult: BindingResult,
-        @RequestParam("dishId") dishId: Long
+        @RequestParam("dishId") dishId: Long,
+        @RequestParam("rating") rating: Int
     ): String {
         val dish = dishService.findById(dishId)
         review.dish = dish

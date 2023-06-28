@@ -29,7 +29,7 @@
             <h3>Rédiger un avis</h3>
             <form th:action="@{/reviews/save}" class="form" th:object="${review}" th:method="post">
                 <input type="hidden" name="dishId" th:value="${dish.id}"/>
-                <div class="grid_1-3">
+                <div class="grid_2-2">
                     <div>
                         <label for="authorFirstName" class="form_label">
                             Nom :
@@ -51,13 +51,33 @@
                         <input type="email" class="form_input" id="email" name="email"
                                th:field="*{email}">
                     </div>
+                    <div>
+                        <label class="form_label">
+                            Note :
+                        </label>
+                        <div class="rating">
+                            <input id="star5" name="rating" type="radio" value="5" class="radio-btn hide"/>
+                            <label for="star5">☆</label>
+                            <input id="star4" name="rating" type="radio" value="4" class="radio-btn hide"/>
+                            <label for="star4">☆</label>
+                            <input id="star3" name="rating" type="radio" value="3" class="radio-btn hide"/>
+                            <label for="star3">☆</label>
+                            <input id="star2" name="rating" type="radio" value="2" class="radio-btn hide"/>
+                            <label for="star2">☆</label>
+                            <input id="star1" name="rating" type="radio" value="1" class="radio-btn hide"/>
+                            <label for="star1">☆</label>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                    <div class="grid_span_col_2">
+                        <label for="comment" class="form_label">
+                            Commentaire :
+                        </label>
+                        <textarea style="width: 100%;" class="form_input" id="comment" name="comment"></textarea>
+                    </div>
+
                 </div>
-                <div>
-                    <label for="comment" class="form_label">
-                        Commentaire :
-                    </label>
-                    <textarea class="form_input" id="comment" name="comment"></textarea>
-                </div>
+
                 <div class="grid_1-2">
                     <button type="submit" class="btn-success">Enregistrer l'avis</button>
                     <button type="reset" class="btn-danger">Réinitialiser l'avis</button>

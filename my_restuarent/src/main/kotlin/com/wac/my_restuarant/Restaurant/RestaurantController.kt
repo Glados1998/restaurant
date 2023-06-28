@@ -1,5 +1,6 @@
 package com.wac.my_restuarant.Restaurant
 
+import com.wac.my_restuarant.Review.ReviewService
 import jakarta.servlet.http.HttpSession
 import org.apache.commons.io.FilenameUtils
 import org.springframework.http.HttpStatus
@@ -12,7 +13,6 @@ import org.springframework.web.multipart.MultipartFile
 import java.io.IOException
 import java.nio.file.Files
 import java.nio.file.Paths
-import java.nio.file.StandardCopyOption
 import java.nio.file.StandardOpenOption
 import java.util.*
 import kotlin.NoSuchElementException
@@ -22,10 +22,12 @@ import kotlin.NoSuchElementException
 class RestaurantController(
     private val restaurantService: RestaurantService,
     private val restaurantRepository: RestaurantRepository,
+    private val reviewService: ReviewService,
 ) {
 
     @GetMapping("/")
-    fun index(): String {
+    fun index(model: Model): String {
+        model.addAttribute("reviews", reviewService.findTop4ByOrderByCreatedAtDesc())
         return "index" // the name of the Thymeleaf template
     }
 

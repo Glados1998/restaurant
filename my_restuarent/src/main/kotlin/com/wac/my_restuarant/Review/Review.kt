@@ -12,6 +12,7 @@ data class Review(
     var authorFirstName: String = "",
     var authorLastName: String = "",
     var email: String = "",
+    var rating: Int = 0,
     var comment: String = "",
     var createdAt: String = "",
 
