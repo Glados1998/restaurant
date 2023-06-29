@@ -16,6 +16,9 @@
             <a class="btn" th:href="@{/cards/all}">Back to list</a>
             <a class="btn-success" th:if="${session.admin != null}" th:href="@{/cards/{id}/addDish(id=${card.id})}">Add
                 dish to card</a>
+            <a th:href="@{/cards/addDish/{id}(id=${card.id})}"
+               th:style="'background-color:' + ${restaurant.secondaryColor} + '; color:' + ${restaurant.fontColor}"
+               class="btn">Ajouter un plat à la carte</a>
         </div>
     </div>
 </main>

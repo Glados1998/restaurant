@@ -55,7 +55,7 @@ class CardController(
         }
     }
 
-    @GetMapping("/{id}/addDish")
+    @GetMapping("/addDish/{id}")
     fun addDishForm(@PathVariable id: Long, model: Model): String {
         val card = cardService.findById(id)
         model.addAttribute("card", card)

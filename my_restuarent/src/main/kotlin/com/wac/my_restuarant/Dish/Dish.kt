@@ -3,6 +3,7 @@ package com.wac.my_restuarant.Dish
 import jakarta.persistence.*
 import com.wac.my_restuarant.Card.Card
 import com.wac.my_restuarant.Menu.Menu
+import com.wac.my_restuarant.Review.Review
 
 @Entity
 data class Dish(
@@ -25,5 +26,9 @@ data class Dish(
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "menu_id")
-    var menu: Menu? = null
+    var menu: Menu? = null,
+
+    @OneToMany(mappedBy = "dish", fetch = FetchType.LAZY, cascade = arrayOf(CascadeType.ALL))
+    var reviews: Set<Review> = HashSet()
+
 )
