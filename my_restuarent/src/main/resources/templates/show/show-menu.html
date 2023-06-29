@@ -7,17 +7,28 @@
 </head>
 <body>
 <div th:include="fragments/navbar::navbar"></div>
-<div class="card">
-    <div class="card_header">
-        <h2 class="dish-title" th:text="${menu.name}">Title</h2>
+<main class="show">
+    <div class="show_center">
+        <div class="show_center_header">
+            <h2 class="dish-title" th:text="${menu.name}">Titre</h2>
+        </div>
+        <div class="show_center_content">
+            <div th:each="dish : ${menu.dishes}">
+                <div class="show_center_item">
+                    <h1 class="dish-title" th:text="${dish.name}"></h1>
+                    <p class="dish-price">Prix : <b th:text="${dish.price}">Non défini</b> Euros</p>
+                    <a class="btn" th:href="@{/dishes/{id}(id=${dish.id})}">Voir</a>
+                </div>
+            </div>
+        </div>
+        <div class="show_center_footer">
+            <a class="btn" th:href="@{/menus/all}">Retour à la liste</a>
+            <a class="btn-success" th:if="${session.admin != null}" th:href="@{/menus/{id}/addDish(id=${menu.id})}">Ajouter
+                un plat au menu</a>
+            <a th:href="@{/menus/edit/{id}(id=${menu.id})}" th:if="${session.admin != null}" class="btn">Modifier le menu</a>
+        </div>
     </div>
-
-    <div class="card_footer">
-        <a class="btn" th:href="@{/menus/all}">Back to list</a>
-        <a class="btn-success" th:if="${session.admin != null}" th:href="@{/menus/{id}/addDish(id=${menu.id})}">Add dish
-            to menu</a>
-    </div>
-</div>
+</main>
 <div th:include="fragments/footer::footer"></div>
 </body>
 </html>

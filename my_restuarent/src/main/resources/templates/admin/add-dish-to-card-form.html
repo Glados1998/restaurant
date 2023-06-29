@@ -8,8 +8,9 @@
 <body>
 <div th:include="fragments/navbar::navbar"></div>
 <main>
-    <form action="#" th:action="@{/cards/addDishToCard}" th:object="${dish}" th:method="post" class="form">
+    <form action="#" th:action="@{/cards/addDishToCard}" th:object="${dish}" th:method="post" class="form" enctype="multipart/form-data">
         <input type="hidden" th:field="*{id}"/>
+        <input type="hidden" name="cardId" th:value="${card.id}">
         <div>
             <label class="form_label" for="name">Dish Name:</label>
             <input class="form_input" type="text" id="name" th:field="*{name}" required/>
@@ -20,14 +21,12 @@
         </div>
         <div>
             <label class="form_label" for="description">Description:</label>
-            <textarea id="description" th:field="*{description}" required minlength="5" maxlength="100">
-        </textarea>
+            <textarea class="form_input" id="description" th:field="*{description}" required minlength="5" maxlength="200"></textarea>
         </div>
         <div>
             <label class="form_label" for="image">Image:</label>
-            <input class="form_input" type="file" id="image" accept="image/png, image/jpeg" th:field="*{image}" required/>
+            <input type="file" id="image" accept="image/png, image/jpeg" name="image"/>
         </div>
-        <input type="hidden" name="cardId" th:value="${card.id}">
         <button type="submit" class="btn-success">Save</button>
     </form>
 </main>

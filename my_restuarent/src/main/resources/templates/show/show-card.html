@@ -10,17 +10,37 @@
 <main>
     <div class="card">
         <div class="card_header">
-            <h2 class="dish-title" th:text="${card.name}">Title</h2>
+            <h2 th:text="${card.name}">Title</h2>
         </div>
-        <div class="card_footer">
-            <a class="btn" th:href="@{/cards/all}">Back to list</a>
-            <a class="btn-success" th:if="${session.admin != null}" th:href="@{/cards/{id}/addDish(id=${card.id})}">Add
-                dish to card</a>
-            <a th:href="@{/cards/addDish/{id}(id=${card.id})}"
-               th:style="'background-color:' + ${restaurant.secondaryColor} + '; color:' + ${restaurant.fontColor}"
-               class="btn">Ajouter un plat à la carte</a>
+        <div class="grid_1-2">
+            <div class="dishes">
+                <h3>Les Plats:</h3>
+                <div class="dishes_list" th:each="dish : ${card.standaloneDishes}">
+                    <h2 th:text="${dish.name}"></h2>
+                    <p th:text="${dish.description}"></p>
+                    <p th:text="${dish.price}"></p>
+                    <a class="btn" th:href="@{/dishes/{id}(id=${dish.id})}">Voir</a>
+                </div>
+            </div>
+            <div class="menu">
+                <h3>Les Menus:</h3>
+                <div class="menu_list" th:each="menu : ${card.menus}">
+                    <div class="card_header">
+                        <h2 class="dish-title" th:text="${menu.name}">Title</h2>
+                        <a class="btn" th:href="@{/menus/{id}(id=${menu.id})}">Voir</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card_footer">
+                <a class="btn" th:href="@{/cards/all}">Back to list</a>
+                <a class="btn" th:if="${session.admin != null}" th:href="@{/cards/addMenu/{id}(id=${card.id})}" th:style="'background-color:' + ${restaurant.secondaryColor} + '; color:' + ${restaurant.fontColor}">Add
+                    menu to card</a>
+                <a th:href="@{/cards/addDish/{id}(id=${card.id})}"
+                   th:style="'background-color:' + ${restaurant.secondaryColor} + '; color:' + ${restaurant.fontColor}"
+                   class="btn">Ajouter un plat à la carte</a>
+            </div>
         </div>
-    </div>
 </main>
 <div th:include="fragments/footer::footer"></div>
 </body>
