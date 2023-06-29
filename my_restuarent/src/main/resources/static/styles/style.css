@@ -397,7 +397,8 @@ a:link, a:visited {
 .review_show-case_header {
   margin-top: 0.25rem;
   display: grid;
-  grid-auto-flow: column;
+  justify-content: left;
+  grid-template-columns: auto auto;
   grid-auto-columns: max-content;
   gap: 1rem;
 }
@@ -469,6 +470,35 @@ a:link, a:visited {
   grid-auto-columns: max-content;
   justify-content: center;
   margin: 2rem 0 2rem 0;
+}
+
+.selection {
+  padding-top: 0;
+  padding-bottom: 0;
+  display: grid;
+  justify-content: left;
+  grid-template-columns: auto auto;
+  margin-left: 10rem;
+}
+.selection_side {
+  place-self: start center;
+  display: grid;
+}
+.selection_side_buttons {
+  margin-top: 1rem;
+  place-self: start;
+}
+.selection_side_buttons a {
+  margin: 0;
+}
+.selection_side_content {
+  width: 25rem;
+  word-break: break-word;
+}
+.selection_images img {
+  width: auto;
+  height: 650px;
+  object-fit: cover;
 }
 
 /*# sourceMappingURL=style.css.map */

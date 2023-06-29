@@ -36,7 +36,7 @@ class RestaurantController(
         model.addAttribute("card", restaurantService.findCard())
         model.addAttribute("menus", restaurantService.findAllMenus())
         model.addAttribute("dishes", restaurantService.findAllDishes())
-        return "card" // the name of the Thymeleaf template
+        return "selection" // the name of the Thymeleaf template
     }
 
     @GetMapping("/about")
@@ -99,7 +99,8 @@ class RestaurantController(
         }
         if (!headerImageFile.isEmpty) {
             val filename = "header-image." + FilenameUtils.getExtension(headerImageFile.originalFilename)
-            val path = Paths.get("/Users/L/Desktop/Web.tmp/school/Wac_semestre_4/projet_en_solo/W-WEB-842-MLH-4-1-java-jerome-alexandre.greder/my_restuarent/src/main/resources/static/images/front/$filename")
+            val path =
+                Paths.get("/Users/L/Desktop/Web.tmp/school/Wac_semestre_4/projet_en_solo/W-WEB-842-MLH-4-1-java-jerome-alexandre.greder/my_restuarent/src/main/resources/static/images/front/$filename")
             restaurant.imagePath = filename
             try {
                 Files.write(path, headerImageFile.bytes, StandardOpenOption.CREATE, StandardOpenOption.WRITE)
@@ -129,7 +130,8 @@ class RestaurantController(
         } else {
             if (!headerImageFile.isEmpty) {
                 val filename = "header-image." + FilenameUtils.getExtension(headerImageFile.originalFilename)
-                val path = Paths.get("/Users/L/Desktop/Web.tmp/school/Wac_semestre_4/projet_en_solo/W-WEB-842-MLH-4-1-java-jerome-alexandre.greder/my_restuarent/src/main/resources/static/images/front/$filename")
+                val path =
+                    Paths.get("/Users/L/Desktop/Web.tmp/school/Wac_semestre_4/projet_en_solo/W-WEB-842-MLH-4-1-java-jerome-alexandre.greder/my_restuarent/src/main/resources/static/images/front/$filename")
                 restaurant.imagePath = filename
                 try {
                     Files.write(path, headerImageFile.bytes, StandardOpenOption.CREATE, StandardOpenOption.WRITE)
