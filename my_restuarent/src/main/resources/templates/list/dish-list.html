@@ -8,23 +8,38 @@
 <body>
 <div th:include="fragments/navbar::navbar"></div>
 <main class="column-grid">
-<div th:include="fragments/dashboard-navbar::dashboard-navbar"></div>
-
-<div class="list">
-    <div class="list_header">
-        <h3>Plats:</h3>
-        <a class="btn" th:if="${session.admin != null}" th:href="@{/dishes/add}">Ajouter un plat</a>
-    </div>
-    <div class="list_column">
-        <div th:each="dish : ${dishes}" class="list_column_element">
-            <div>
-                <h3 th:text="${dish.name}"></h3>
-                <p>Euro:<span th:text="${dish.price}"></span></p>
-                <a class="btn" th:href="@{/dishes/{id}(id=${dish.id})}">Show</a>
+    <div class="selection_side">
+        <div class="selection_side_header">
+            <h1>Découvrez nos plats <br> soigneusement sélectionnés</h1>
+        </div>
+        <div class="selection_side_content">
+            <p>Nous vous proposons une sélection exceptionnelle de plats préparés avec passion et expertise. <br> Chaque
+                plat
+                est créé en utilisant les meilleurs ingrédients et les techniques les plus raffinées.</p>
+        </div>
+        <div class="selection_side_buttons">
+            <div class="grid_1-2">
+                <a th:href="@{/restaurant/card}"
+                   th:style="'background-color:' + ${restaurant.secondaryColor} + '; color:' + ${restaurant.fontColor}"
+                   class="btn">Retour vers selection</a>
+                <a class="btn" th:if="${session.admin != null}" th:href="@{/dishes/add}">Ajouter un plat</a>
             </div>
         </div>
     </div>
-</div>
+    <div class="list">
+        <div class="list_header">
+            <h3>Plats:</h3>
+        </div>
+        <div class="list_column">
+            <div th:each="dish : ${dishes}" class="list_column_element">
+                <div>
+                    <h3 th:text="${dish.name}"></h3>
+                    <p>Euro:<span th:text="${dish.price}"></span></p>
+                    <a class="btn" th:href="@{/dishes/{id}(id=${dish.id})}">Show</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </main>
 <div th:include="fragments/footer::footer"></div>
 </body>

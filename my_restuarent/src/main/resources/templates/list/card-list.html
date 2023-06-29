@@ -9,11 +9,27 @@
 <body>
 <div th:include="fragments/navbar::navbar"></div>
 <main class="column-grid">
-    <div th:include="fragments/dashboard-navbar::dashboard-navbar"></div>
+    <div class="selection_side">
+        <div class="selection_side_header">
+            <h1>Découvrez nos plats <br> soigneusement sélectionnés</h1>
+        </div>
+        <div class="selection_side_content">
+            <p>Nous vous proposons une sélection exceptionnelle de plats préparés avec passion et expertise. <br> Chaque
+                plat
+                est créé en utilisant les meilleurs ingrédients et les techniques les plus raffinées.</p>
+        </div>
+        <div class="selection_side_buttons">
+            <div class="grid_1-2">
+                <a th:href="@{/restaurant/card}"
+                   th:style="'background-color:' + ${restaurant.secondaryColor} + '; color:' + ${restaurant.fontColor}"
+                   class="btn">Retour vers selection</a>
+                <a class="btn" th:if="${session.admin != null}" th:href="@{/cards/add}">Ajouter une carte</a>
+            </div>
+        </div>
+    </div>
     <div class="list">
         <div class="list_header">
             <h3>Cartes:</h3>
-            <a class="btn" th:if="${session.admin != null}" th:href="@{/cards/add}">Ajouter une carte</a>
         </div>
         <div class="list_column">
             <div th:each="card : ${cards}" class="list_column_element">
