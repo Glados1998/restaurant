@@ -12,10 +12,10 @@
     <form action="#" th:action="@{/cards/save}" th:object="${card}" th:method="post" class="form">
         <input type="hidden" th:field="*{id}"/>
         <div>
-            <label class="form_label" for="name">Card Name:</label>
+            <label class="form_label" for="name">Nom de la carte :</label>
             <input class="form_input" type="text" id="name" th:field="*{name}" required/>
         </div>
-        <button type="submit" class="btn-success">Save</button>
+        <button type="submit" class="btn-success">Enregistrer</button>
     </form>
 </main>
 <div th:include="fragments/footer::footer"></div>

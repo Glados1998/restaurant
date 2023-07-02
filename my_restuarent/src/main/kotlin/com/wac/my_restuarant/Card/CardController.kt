@@ -52,14 +52,10 @@ class CardController(
     }
 
 
-    @DeleteMapping("/{id}/delete")
-    fun deleteById(@PathVariable id: Long): ResponseEntity<Void> {
-        return try {
-            cardService.deleteById(id)
-            ResponseEntity(HttpStatus.NO_CONTENT)
-        } catch (e: NoSuchElementException) {
-            ResponseEntity(HttpStatus.NOT_FOUND)
-        }
+    @PostMapping("/delete/{id}")
+    fun deleteById(@PathVariable("id") id: Long, model: Model?): String? {
+        cardService.deleteById(id)
+        return "redirect:/cards/all"
     }
 
     @GetMapping("/addDish/{id}")

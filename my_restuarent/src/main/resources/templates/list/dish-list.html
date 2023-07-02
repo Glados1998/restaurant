@@ -35,7 +35,13 @@
                 <div>
                     <h3 th:text="${dish.name}"></h3>
                     <p>Euro:<span th:text="${dish.price}"></span></p>
-                    <a class="btn" th:href="@{/dishes/{id}(id=${dish.id})}">Show</a>
+                    <div class="grid_1-2">
+                        <a class="btn" th:href="@{/dishes/{id}(id=${dish.id})}">Voir</a>
+                        <form th:action="@{/dishes/delete/{id}(id=${dish.id})}" method="post">
+                            <input type="hidden" name="_method" value="delete"/>
+                            <button type="submit" class="btn">Delete</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

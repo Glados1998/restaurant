@@ -12,22 +12,29 @@
         <input type="hidden" th:field="*{id}"/>
         <input type="hidden" name="menuId" th:value="${menu.id}">
         <div>
-            <label class="form_label" for="name">Dish Name:</label>
+            <label class="form_label" for="name">Nom du plat :</label>
             <input class="form_input" type="text" id="name" th:field="*{name}" required/>
         </div>
         <div>
-            <label class="form_label" for="price">Price:</label>
+            <label class="form_label" for="price">Prix :</label>
             <input class="form_input" type="number" id="price" th:field="*{price}" required/>
         </div>
         <div>
-            <label class="form_label" for="description">Description:</label>
+            <label class="form_label" for="description">Description :</label>
             <textarea class="form_input" id="description" th:field="*{description}" required minlength="5" maxlength="200"></textarea>
         </div>
         <div>
-            <label class="form_label" for="image">Image:</label>
+            <label class="form_label" for="image">Image :</label>
             <input type="file" id="image" accept="image/png, image/jpeg" name="image"/>
         </div>
-        <button type="submit" class="btn">Save</button>
+        <div>
+            <label class="form_label">Allergies:</label>
+            <div th:each="allergy : ${allAllergies}">
+                <input type="checkbox" th:id="${'allergy' + allergy.id}" th:value="${allergy.id}" th:name="allergies"/>
+                <label th:for="${'allergy' + allergy.id}" th:text="${allergy.name}"></label>
+            </div>
+        </div>
+        <button type="submit" class="btn">Enregistrer</button>
     </form>
 </main>
 <div th:include="fragments/footer::footer"></div>

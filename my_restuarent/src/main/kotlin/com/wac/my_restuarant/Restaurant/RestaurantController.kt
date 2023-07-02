@@ -145,39 +145,33 @@ class RestaurantController(
 
         return "redirect:/restaurant/settings"
     }
+    @PostMapping("/reset")
+    fun resetById(): String {
+        try {
+            val restaurant = restaurantService.findById(1)
+            restaurant.name = ""
+            restaurant.url = ""
+            restaurant.streetAddress = ""
+            restaurant.streetNumber = ""
+            restaurant.city = ""
+            restaurant.postalCode = ""
+            restaurant.email = ""
+            restaurant.phone = ""
+            restaurant.mainColor = ""
+            restaurant.secondaryColor = ""
+            restaurant.fontColor = ""
+            restaurant.linkColor = ""
+            restaurant.imagePath = ""
+            restaurant.description = ""
 
-
-    @GetMapping("/all")
-    fun findAll(): ResponseEntity<Iterable<Restaurant>> {
-        return ResponseEntity.ok(restaurantService.findAll())
-    }
-
-    @GetMapping("/{id}")
-    fun findById(@PathVariable id: Long): ResponseEntity<Restaurant> {
-        return try {
-            ResponseEntity.ok(restaurantService.findById(id))
+            // Save the updated restaurant back to the database.
+            restaurantService.save(restaurant)
         } catch (e: NoSuchElementException) {
-            ResponseEntity(HttpStatus.NOT_FOUND)
+            println("No such restaurant.")
+            return "redirect:/restaurant/settings"
         }
-    }
-
-    @DeleteMapping("/{id}/delete")
-    fun deleteById(@PathVariable id: Long): ResponseEntity<Void> {
-        return try {
-            restaurantService.deleteById(id)
-            ResponseEntity(HttpStatus.NO_CONTENT)
-        } catch (e: NoSuchElementException) {
-            ResponseEntity(HttpStatus.NOT_FOUND)
-        }
-    }
-
-    @PutMapping("/{id}/edit")
-    fun edit(@PathVariable id: Long, @RequestBody restaurant: Restaurant): ResponseEntity<Restaurant> {
-        return try {
-            ResponseEntity.ok(restaurantService.edit(id, restaurant))
-        } catch (e: NoSuchElementException) {
-            ResponseEntity(HttpStatus.NOT_FOUND)
-        }
+        return "redirect:/restaurant/settings"
     }
 
 }
+

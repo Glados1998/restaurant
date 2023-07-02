@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${restaurant?.name + ' - list plats' ?: 'Mon Restaurant'}"></title>
+    <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body>
+<div th:include="fragments/navbar::navbar"></div>
+<main class="column-grid">
+    <div class="selection_side">
+        <div class="selection_side_header">
+            <h1>Les allergies courantes</h1>
+        </div>
+        <div class="selection_side_content">
+            <p>Nous sommes attentifs aux allergies de nos clients. Voici une liste des allergies courantes et les plats adaptés.
+                Assurez-vous de prendre en compte ces allergies lors de la préparation des plats pour nos clients.</p>
+        </div>
+        <div class="selection_side_buttons">
+            <div class="grid_1-2">
+                <a th:href="@{/restaurant/settings}" class="btn">Retour aux paramètres</a>
+                <a class="btn" th:href="@{/allergies/new}">Ajouter une allergie</a>
+            </div>
+        </div>
+    </div>
+    <div class="list">
+        <div class="list_header">
+            <h3>Allergies courantes :</h3>
+        </div>
+        <div class="list_column">
+            <div th:each="allergie : ${allergies}" class="list_column_element">
+                <div>
+                    <h3 th:text="${allergie.name}"></h3>
+                    <div class="grid_1-2">
+                        <a class="btn" th:href="@{/allergies/{id}(id=${allergie.id})}">Voir</a>
+                        <form th:action="@{/allergies/delete/{id}(id=${allergie.id})}" method="post">
+                            <input type="hidden" name="_method" value="delete" />
+                            <button type="submit" class="btn">Supprimer</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<div th:include="fragments/footer::footer"></div>
+</body>
+</html>

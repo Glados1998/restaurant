@@ -24,4 +24,12 @@ data class Restaurant(
     var description: String = ""
 ) {
 
+    @get:Transient
+    val isConfigured: Boolean
+        get() = name.isNotEmpty() && url.isNotEmpty() && streetAddress.isNotEmpty() && streetNumber.isNotEmpty() && city.isNotEmpty() && postalCode.isNotEmpty() && email.isNotEmpty() && phone.isNotEmpty() && imagePath.isNotEmpty()
+
+    @get:Transient
+    val fullAddress: String
+        get() = "$streetNumber $streetAddress, $postalCode $city"
+
 }

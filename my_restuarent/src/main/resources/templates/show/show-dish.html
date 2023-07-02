@@ -24,6 +24,13 @@
         <div class="show_side_body">
             <p th:text="${dish.description}"></p>
         </div>
+        <div class="show_side_allergies">
+            <h3>Allergies:</h3>
+            <ul>
+                <li th:each="allergy : ${dish.allergies}" th:text="${allergy.name}"></li>
+            </ul>
+        </div>
+
 
         <div class="review" id="review-form">
             <h3>Rédiger un avis</h3>

@@ -14,9 +14,9 @@
                 <option th:each="menu : ${allMenus}" th:value="${menu.id}" th:text="${menu.name}">Menu</option>
             </select>
         </label>
-        <input class="form_input" type="text" th:field="*{name}" placeholder="Or enter a new menu name..."/>
+        <input class="form_input" type="text" th:field="*{name}" placeholder="Ou entrez un nouveau nom de menu..."/>
         <input type="hidden" name="cardId" th:value="${card.id}">
-        <input class="btn" type="submit" value="Add Menu to Card">
+        <input class="btn" type="submit" value="Ajouter le menu à la carte">
     </form>
 </main>
 <div th:include="fragments/footer::footer"></div>

@@ -2,7 +2,7 @@
 <div th:fragment="dashboard-navbar">
     <nav class="vertical-navbar" th:style="'background-color:' + ${restaurant.mainColor} + '; color:' + ${restaurant.fontColor}">
         <div class="vertical-navbar_header">
-            <h3>lorem ipsum</h3>
+            <h3>Tableau de bord</h3>
         </div>
         <ul class="vertical-navbar_nav">
             <li class="vertical-navbar_nav_link">
@@ -14,10 +14,19 @@
             <li class="vertical-navbar_nav_link">
                 <a class="vertical-navbar_nav_link_item" th:href="@{/dishes/all}">Plats</a>
             </li>
-            <li class="vertical-navbar_nav_link" th:if="${session.admin != null}">
+            <li class="vertical-navbar_nav_link">
+                <a class="vertical-navbar_nav_link_item" th:href="@{/allergies/all}">Allergies</a>
+            </li>
+            <li class="vertical-navbar_nav_link">
+                <a class="vertical-navbar_nav_link_item" th:href="@{/admins/all}">Administrateurs</a>
+            </li>
+            <li class="vertical-navbar_nav_link">
                 <a class="vertical-navbar_nav_link_item" th:href="@{/restaurant/settings}">Paramètres</a>
             </li>
         </ul>
     </nav>
+    <form th:if="${restaurant.isConfigured}" action="/restaurant/reset" method="post">
+        <input type="submit" class="btn" value="Réinitialiser les paramètres">
+    </form>
 </div>
 </html>

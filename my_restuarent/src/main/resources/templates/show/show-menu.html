@@ -14,9 +14,9 @@
         </div>
         <div class="show_center_content">
             <div th:each="dish : ${menu.dishes}">
-                <div class="show_center_item">
-                    <h1 class="dish-title" th:text="${dish.name}"></h1>
-                    <p class="dish-price">Prix : <b th:text="${dish.price}">Non défini</b> Euros</p>
+                <div class="show_center_content_item">
+                    <h2 class="dish-title" th:text="${dish.name}"></h2>
+                    <p class="dish-price">Euros : <b th:text="${dish.price}">Non défini</b></p>
                     <a class="btn" th:href="@{/dishes/{id}(id=${dish.id})}">Voir</a>
                 </div>
             </div>

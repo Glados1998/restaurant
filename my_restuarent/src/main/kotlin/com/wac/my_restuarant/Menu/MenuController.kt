@@ -1,10 +1,9 @@
 package com.wac.my_restuarant.Menu
 
+import com.wac.my_restuarant.Allergies.AllergiesService
 import com.wac.my_restuarant.Dish.Dish
 import com.wac.my_restuarant.Dish.DishService
 import org.apache.commons.io.FilenameUtils
-import org.springframework.http.HttpStatus
-import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.validation.BindingResult
@@ -19,7 +18,8 @@ import java.nio.file.StandardOpenOption
 @RequestMapping("/menus")
 class MenuController(
     private val menuService: MenuService,
-    private val dishService: DishService
+    private val dishService: DishService,
+    private val allergiesService: AllergiesService
 ) {
 
     @GetMapping("/add")
@@ -48,14 +48,10 @@ class MenuController(
         return "show/show-menu"
     }
 
-    @DeleteMapping("/{id}/delete")
-    fun deleteById(@PathVariable id: Long): ResponseEntity<Void> {
-        return try {
-            menuService.deleteById(id)
-            ResponseEntity(HttpStatus.NO_CONTENT)
-        } catch (e: NoSuchElementException) {
-            ResponseEntity(HttpStatus.NOT_FOUND)
-        }
+    @PostMapping("/delete/{id}")
+    fun deleteById(@PathVariable("id") id: Long, model: Model?): String? {
+        menuService.deleteById(id)
+        return "redirect:/menus/all"
     }
 
     @GetMapping("/edit/{id}")
@@ -68,8 +64,10 @@ class MenuController(
     @GetMapping("/{id}/addDish")
     fun addDishForm(@PathVariable id: Long, model: Model): String {
         val menu = menuService.findById(id)
+        val allAllergies = allergiesService.findAll()
         model.addAttribute("menu", menu)
         model.addAttribute("dish", Dish())
+        model.addAttribute("allAllergies", allAllergies)
         return "admin/add-dish-to-menu-form"
     }
 

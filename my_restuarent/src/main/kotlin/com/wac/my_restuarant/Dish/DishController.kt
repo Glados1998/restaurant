@@ -1,9 +1,10 @@
 package com.wac.my_restuarant.Dish
 
+import com.wac.my_restuarant.Allergies.AllergiesService
+import com.wac.my_restuarant.Card.CardService
+import com.wac.my_restuarant.Menu.MenuService
 import com.wac.my_restuarant.Review.Review
 import org.apache.commons.io.FilenameUtils
-import org.springframework.http.HttpStatus
-import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.validation.BindingResult
@@ -14,13 +15,25 @@ import java.nio.file.Files
 import java.nio.file.Paths
 import java.nio.file.StandardOpenOption
 
+
 @Controller
 @RequestMapping("/dishes")
-class DishController(private val dishService: DishService) {
+class DishController(
+    private val dishService: DishService,
+    private val menuService: MenuService,
+    private val cardService: CardService,
+    private val allergiesService: AllergiesService
+) {
 
     @GetMapping("/add")
     fun addDishForm(model: Model): String {
+        val allMenus = menuService.findAll()
+        val allCards = cardService.findAll()
+        val allAllergies = allergiesService.findAll()
         model.addAttribute("dish", Dish())
+        model.addAttribute("menus", allMenus)
+        model.addAttribute("cards", allCards)
+        model.addAttribute("allAllergies", allAllergies)
         return "admin/add-edit-dish"
     }
 
@@ -51,9 +64,13 @@ class DishController(private val dishService: DishService) {
     fun create(
         @ModelAttribute dish: Dish,
         bindingResult: BindingResult,
-        @RequestParam("image") dishImageFile: MultipartFile
+        @RequestParam("image", required = false) dishImageFile: MultipartFile?,
+        @RequestParam("menuId") menuId: Long?,
+        @RequestParam("cardId") cardId: Long?,
+        @RequestParam("allergies") allergyIds: List<Long>
     ): String {
-        if (!dishImageFile.isEmpty) {
+        // Check if an image file was provided
+        if (dishImageFile != null && !dishImageFile.isEmpty) {
             val filename = "${dish.name}-image." + FilenameUtils.getExtension(dishImageFile.originalFilename)
             val path =
                 Paths.get("/Users/L/Desktop/Web.tmp/school/Wac_semestre_4/projet_en_solo/W-WEB-842-MLH-4-1-java-jerome-alexandre.greder/my_restuarent/src/main/resources/static/images/common/$filename")
@@ -64,19 +81,22 @@ class DishController(private val dishService: DishService) {
                 e.printStackTrace()
                 println("Error writing file: " + e.message)
             }
+        } else if (dish.id != 0L) {
+            // If no new image was provided and the dish already exists, keep the existing image
+            val existingDish = dishService.get(dish.id)
+            if (existingDish != null) {
+                dish.image = existingDish.image
+            }
         }
-        dishService.save(dish)
+        dishService.saveDishAndRelatedEntities(dish, menuId, cardId, allergyIds)
         return "redirect:/dishes/${dish.id}"
     }
 
 
-    @DeleteMapping("/{id}/delete")
-    fun deleteById(@PathVariable id: Long): ResponseEntity<Void> {
-        return try {
-            dishService.deleteById(id)
-            ResponseEntity(HttpStatus.NO_CONTENT)
-        } catch (e: NoSuchElementException) {
-            ResponseEntity(HttpStatus.NOT_FOUND)
-        }
+    @PostMapping("/delete/{id}")
+    fun deleteById(@PathVariable("id") id: Long, model: Model?): String? {
+        dishService.deleteById(id)
+        return "redirect:/dishes/all"
     }
+
 }

@@ -9,8 +9,10 @@
 <body>
 <div th:include="fragments/navbar::navbar"></div>
 <main>
-    <form action="#" th:action="@{/dishes/save}" th:object="${dish}" th:method="post" class="form" enctype="multipart/form-data">
+    <form action="#" th:action="@{/dishes/save}" th:object="${dish}" th:method="post" class="form"
+          enctype="multipart/form-data">
         <input type="hidden" th:field="*{id}"/>
+
         <div>
             <label class="form_label" for="name">Dish Name:</label>
             <input class="form_input" type="text" id="name" th:field="*{name}" required/>
@@ -21,11 +23,33 @@
         </div>
         <div>
             <label class="form_label" for="description">Description:</label>
-            <textarea class="form_input" id="description" th:field="*{description}" required minlength="5" maxlength="200"></textarea>
+            <textarea class="form_input" id="description" th:field="*{description}" required minlength="5"
+                      maxlength="200"></textarea>
         </div>
         <div>
             <label class="form_label" for="image">Image:</label>
             <input type="file" id="image" accept="image/png, image/jpeg" name="image"/>
+        </div>
+        <div>
+            <label class="form_label" for="menuId">Menu:</label>
+            <select class="form_input" id="menuId" name="menuId">
+                <option value="" label="Select menu"></option>
+                <option th:each="menu : ${menus}" th:value="${menu.id}" th:text="${menu.name}"></option>
+            </select>
+        </div>
+        <div>
+            <label class="form_label" for="cardId">Card:</label>
+            <select class="form_input" id="cardId" name="cardId">
+                <option value="" label="Select card"></option>
+                <option th:each="card : ${cards}" th:value="${card.id}" th:text="${card.name}"></option>
+            </select>
+        </div>
+        <div>
+            <label class="form_label">Allergies:</label>
+            <div th:each="allergy : ${allAllergies}">
+                <input type="checkbox" th:id="${'allergy' + allergy.id}" th:value="${allergy.id}" th:name="allergies"/>
+                <label th:for="${'allergy' + allergy.id}" th:text="${allergy.name}"></label>
+            </div>
         </div>
         <button type="submit" class="btn">Save</button>
     </form>

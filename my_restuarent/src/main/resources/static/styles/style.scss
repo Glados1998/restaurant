@@ -3,9 +3,17 @@
 @import "header";
 @import "input";
 
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
 body {
   margin: 0;
   font-family: "SF Pro", sans-serif;
+  flex: 1 0 auto;
 }
 
 main {
@@ -18,24 +26,18 @@ a:link, a:visited {
 }
 
 .footer {
+  flex-shrink: 0;
   display: grid;
   gap: 2rem;
   grid-auto-flow: column;
   grid-auto-columns: max-content;
-  position: relative;
-  width: 100%;
-  bottom: 0;
-  margin: 0;
-  padding: 1rem;
 
   &_container {
+    width: 100%;
+    max-width: 10rem;
     h5 {
       margin-top: 0;
     }
-
-    width: 100%;
-    max-width: 10rem;
-
     a {
       color: inherit;
     }
@@ -276,6 +278,26 @@ a:link, a:visited {
   grid-auto-flow: column;
   grid-template-columns: 1fr auto;
 
+  &_center {
+    text-align: center;
+
+    &_content {
+      overflow: auto;
+      height: 15rem;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+
+      &_item {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: max-content;
+        gap: 1rem;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+
   &_side {
     padding: 3rem;
     overflow: auto;
@@ -373,5 +395,45 @@ a:link, a:visited {
       height: 650px;
       object-fit: cover;
     }
+  }
+}
+
+.dishes {
+
+  &_list {
+    display: grid;
+    gap: 2rem;
+
+    &_item {
+      display: grid;
+      gap: 2rem;
+      grid-auto-flow: column;
+      grid-auto-columns: max-content;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+.menu {
+
+  &_list {
+    display: grid;
+    gap: 2rem;
+
+    &_item {
+      display: grid;
+      gap: 2rem;
+      grid-auto-flow: column;
+      grid-auto-columns: max-content;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+.card {
+  &_header {
+    text-align: center;
   }
 }

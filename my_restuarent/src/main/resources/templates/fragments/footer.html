@@ -11,10 +11,7 @@
         <div class="footer_container">
             <h5>Contact :</h5>
             <address>
-                <p>Adresse : <span th:text="${restaurant?.streetAddress ?: 'Inconnue'}"></span> <span
-                        th:text="${restaurant?.streetNumber ?: 'Inconnu'}"></span>, <span
-                        th:text="${restaurant?.city ?: 'Inconnue'}"></span>, <span
-                        th:text="${restaurant?.postalCode ?: 'Inconnu'}"></span></p>
+                <p>Adresse : <span th:text="${restaurant?.fullAddress ?: 'Inconnue'}"></span></p>
                 <p>Téléphone : <span th:text="${restaurant?.phone ?: 'Inconnu'}"></span></p>
                 <p>Email : <span th:text="${restaurant?.email ?: 'Inconnu'}"></span></p>
             </address>

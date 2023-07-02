@@ -9,10 +9,10 @@
 <body>
 <div th:include="fragments/navbar::navbar"></div>
 <main>
-    <form action="#" th:action="@{/menus/save}" th:object="${menu}" th:method="post" class="form">
+    <form action="#" th:action="@{/allergies/save}" th:object="${allergies}" th:method="post" class="form">
         <input type="hidden" th:field="*{id}"/>
         <div>
-            <label class="form_label" for="name">Nom du menu :</label>
+            <label class="form_label" for="name">Allergies :</label>
             <input class="form_input" type="text" id="name" th:field="*{name}" required/>
         </div>
         <button type="submit" class="btn">Enregistrer</button>

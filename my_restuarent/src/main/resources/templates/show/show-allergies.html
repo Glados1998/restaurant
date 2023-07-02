@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body>
+<div th:include="fragments/navbar::navbar"></div>
+<main class="show">
+    <div class="show_center">
+        <div class="show_center_header">
+            <h2 class="dish-title">Allergies</h2>
+        </div>
+        <div class="show_center_content">
+                <div class="show_center_content_item">
+                    <h2 class="dish-title" th:text="${allergies.name}"></h2>
+                </div>
+        </div>
+        <div class="show_center_footer">
+            <a class="btn" th:href="@{/allergies/all}">Retour à la liste</a>
+            <a class="btn" th:href="@{/allergies/edit/{id}(id=${allergies.id})}">Modifier l'allergie</a>
+        </div>
+    </div>
+</main>
+<div th:include="fragments/footer::footer"></div>
+</body>
+</html>

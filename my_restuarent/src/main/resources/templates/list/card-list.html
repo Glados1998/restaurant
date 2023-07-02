@@ -34,7 +34,14 @@
         <div class="list_column">
             <div th:each="card : ${cards}" class="list_column_element">
                 <h3>Nom de la carte: <span th:text="${card.name}"></span></h3>
-                <a class="btn" th:href="@{/cards/{id}(id=${card.id})}">Details</a>
+                <div class="grid_1-2">
+                    <a class="btn" th:href="@{/cards/{id}(id=${card.id})}">Details</a>
+                    <form th:action="@{/cards/delete/{id}(id=${card.id})}" method="post">
+                        <input type="hidden" name="_method" value="delete"/>
+                        <button type="submit" class="btn">Delete</button>
+                    </form>
+                </div>
+
             </div>
         </div>
     </div>
