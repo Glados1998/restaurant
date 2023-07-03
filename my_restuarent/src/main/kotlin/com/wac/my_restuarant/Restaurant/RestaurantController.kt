@@ -33,9 +33,6 @@ class RestaurantController(
 
     @GetMapping("/card")
     fun card(model: Model): String {
-        model.addAttribute("card", restaurantService.findCard())
-        model.addAttribute("menus", restaurantService.findAllMenus())
-        model.addAttribute("dishes", restaurantService.findAllDishes())
         return "selection" // the name of the Thymeleaf template
     }
 

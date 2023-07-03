@@ -10,20 +10,17 @@
 <main class="column-grid">
     <div class="selection_side">
         <div class="selection_side_header">
-            <h1>Découvrez nos plats <br> soigneusement sélectionnés</h1>
+            <h1>Découvrez nos menus <br> soigneusement sélectionnés</h1>
         </div>
         <div class="selection_side_content">
-            <p>Nous vous proposons une sélection exceptionnelle de plats préparés avec passion et expertise. <br> Chaque
-                plat
-                est créé en utilisant les meilleurs ingrédients et les techniques les plus raffinées.</p>
+            <p>Nous vous proposons une sélection exceptionnelle de menus élaborés avec passion et expertise. <br>
+                Chaque menu offre une expérience culinaire unique, avec des plats préparés en utilisant les meilleurs ingrédients et les techniques les plus raffinées.
+                <br>Laissez-vous séduire par notre variété de saveurs et de combinaisons gustatives.</p>
         </div>
         <div class="selection_side_buttons">
             <div class="grid_1-2">
-                <a th:href="@{/restaurant/card}"
-                   th:style="'background-color:' + ${restaurant.secondaryColor} + '; color:' + ${restaurant.fontColor}"
-                   class="btn">Retour vers selection</a>
+                <a th:href="@{/restaurant/card}" th:style="'background-color:' + ${restaurant.secondaryColor} + '; color:' + ${restaurant.fontColor}" class="btn">Retour vers la sélection</a>
                 <a class="btn" th:if="${session.admin != null}" th:href="@{/menus/add}">Ajouter un menu</a>
-
             </div>
         </div>
     </div>

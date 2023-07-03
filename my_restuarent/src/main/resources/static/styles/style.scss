@@ -17,7 +17,6 @@ body {
 }
 
 main {
-  padding: 2rem;
   height: 100%;
 }
 
@@ -26,6 +25,7 @@ a:link, a:visited {
 }
 
 .footer {
+  padding-top: 1rem;
   flex-shrink: 0;
   display: grid;
   gap: 2rem;
@@ -371,7 +371,7 @@ a:link, a:visited {
   margin-left: 10rem;
 
   &_side {
-    place-self: start center;
+    place-self: center;
     display: grid;
 
     &_buttons {
