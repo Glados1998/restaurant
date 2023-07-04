@@ -7,17 +7,21 @@
 
 </head>
 <body>
-<div th:include="fragments/navbar::navbar"></div>
-<main>
-    <form action="#" th:action="@{/allergies/save}" th:object="${allergies}" th:method="post" class="form">
-        <input type="hidden" th:field="*{id}"/>
-        <div>
-            <label class="form_label" for="name">Allergies :</label>
-            <input class="form_input" type="text" id="name" th:field="*{name}" required/>
-        </div>
-        <button type="submit" class="btn">Enregistrer</button>
-    </form>
-</main>
-<div th:include="fragments/footer::footer"></div>
+<div id="page-container">
+    <div id="content-wrap">
+        <div th:include="fragments/navbar::navbar"></div>
+        <main>
+            <form action="#" th:action="@{/allergies/save}" th:object="${allergies}" th:method="post" class="form">
+                <input type="hidden" th:field="*{id}"/>
+                <div>
+                    <label class="form_label" for="name">Allergies :</label>
+                    <input class="form_input" type="text" id="name" th:field="*{name}" required/>
+                </div>
+                <button type="submit" class="btn">Enregistrer</button>
+            </form>
+        </main>
+    </div>
+        <div th:include="fragments/footer::footer" id="footer"></div>
+</div>
 </body>
 </html>

@@ -6,52 +6,59 @@
     <link rel="stylesheet" th:href="@{/styles/style.css}">
 </head>
 <body>
-<div th:include="fragments/navbar::navbar"></div>
-<main class="index">
-    <div th:if="${restaurant.isConfigured}" class="index_top">
-        <div class="index_top_header">
-            <img th:src="@{/images/front/{filename}(filename=${restaurant.imagePath})}"/>
-        </div>
-        <div class="index_top_header">
-            <h1>Bienvenue chez <span th:text="${restaurant?.name ?: 'Mon Restaurant'}"></span></h1>
-            <h3>Découvrez le meilleur <br> de la gastronomie.</h3>
-            <p>Vivez une expérience culinaire exceptionnelle. <br>
-                Des plats savoureux préparés avec soin par nos talentueux chefs. <br>
-                Des ingrédients frais et de saison sublimés pour une explosion de saveurs.</p>
-        </div>
-    </div>
-    <div th:unless="${restaurant.isConfigured}" class="index_top">
-        <div class="index_top_header">
-            <h1>Bienvenue chez <span th:text="${restaurant?.name ?: 'Mon Restaurant'}"></span></h1>
-            <h3>Découvrez le meilleur <br> de la gastronomie.</h3>
-            <p>Nous sommes ravis de vous accueillir dans notre restaurant. <br>
-                Veuillez noter que nous ne sommes pas encore ouverts au public. <br>
-                Nous travaillons actuellement à la configuration de notre établissement <br>
-                afin de vous offrir une expérience culinaire exceptionnelle.</p>
-        </div>
-    </div>
-    </div>
-    <div class="index_content">
-        <div class="index_content_carrousel">
-            <div th:if="${reviews}" th:each="review : ${reviews}">
-                <div class="review_show-case"
-                     th:style="'background-color:' + ${restaurant.secondaryColor} + '; color:' + ${restaurant.fontColor}">
-                    <img th:src="@{/images/common/{filename}(filename=${review.dish.image})}"/>
-                    <div class="review_show-case_header">
-                        <h2 th:text="${review.dish.name}"></h2>
-                        <p>5 étoiles sur: <span th:text="${review.rating}"></span></p>
-                        <p>Date: <span th:text="${review.createdAt}"></span></p>
-                    </div>
-                    <div class="rating" th:attr="data-rating=${review.rating}">
-                    </div>
-                    <p>Auteur: <strong th:text="${review.authorFirstName} + ' ' + ${review.authorLastName}"></strong>
-                    </p>
-                    <p>Commentaire: <span th:text="${review.comment}"></span></p>
+<div id="page-container">
+    <div id="content-wrap">
+        <div th:include="fragments/navbar::navbar"></div>
+        <main class="index">
+            <div th:if="${restaurant.isConfigured}" class="index_top">
+                <div class="index_top_header">
+                    <img th:src="@{/images/front/{filename}(filename=${restaurant.imagePath})}"/>
+                </div>
+                <div class="index_top_header">
+                    <h1>Bienvenue chez <span th:text="${restaurant?.name ?: 'Mon Restaurant'}"></span></h1>
+                    <h3>Découvrez le meilleur <br> de la gastronomie.</h3>
+                    <p>Vivez une expérience culinaire exceptionnelle. <br>
+                        Des plats savoureux préparés avec soin par nos talentueux chefs. <br>
+                        Des ingrédients frais et de saison sublimés pour une explosion de saveurs.</p>
                 </div>
             </div>
-        </div>
+            <div th:unless="${restaurant.isConfigured}" class="index_top">
+                <div class="index_top_header">
+                    <h1>Bienvenue chez <span th:text="${restaurant?.name ?: 'Mon Restaurant'}"></span></h1>
+                    <h3>Découvrez le meilleur <br> de la gastronomie.</h3>
+                    <p>Nous sommes ravis de vous accueillir dans notre restaurant. <br>
+                        Veuillez noter que nous ne sommes pas encore ouverts au public. <br>
+                        Nous travaillons actuellement à la configuration de notre établissement <br>
+                        afin de vous offrir une expérience culinaire exceptionnelle.</p>
+                </div>
+            </div>
+            <div class="index_content">
+                <div class="index_content_carrousel">
+                    <div th:if="${reviews}" th:each="review : ${reviews}">
+                        <div class="review_show-case"
+                             th:style="'background-color:' + ${restaurant.secondaryColor} + '; color:' + ${restaurant.fontColor}">
+                            <img th:src="@{/images/common/{filename}(filename=${review?.dish?.image})}"/>
+                            <div class="review_show-case_header">
+                                <h2 th:text="${review?.dish?.name}"></h2>
+                                <p>5 étoiles sur: <span th:text="${review?.rating}"></span></p>
+                                <p>Date: <span th:text="${review?.createdAt}"></span></p>
+                            </div>
+                            <div class="rating" th:attr="data-rating=${review?.rating}">
+                            </div>
+                            <p>Auteur: <strong
+                                    th:text="${review?.authorFirstName} + ' ' + ${review?.authorLastName}"></strong>
+                            </p>
+                            <p>Commentaire: <span th:text="${review?.comment}"></span></p>
+                        </div>
+                    </div>
+                    <div th:if="${#lists.isEmpty(reviews)}">
+                        <p>No reviews available at the moment.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
-</main>
-<div th:include="fragments/footer::footer"></div>
+    <div th:include="fragments/footer::footer" id="footer"></div>
+</div>
 </body>
 </html>

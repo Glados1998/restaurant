@@ -34,7 +34,7 @@ class CardController(
     @PostMapping("/save")
     fun saveCard(@ModelAttribute card: Card): String {
         cardService.save(card)
-        return "redirect:/cards"
+        return "redirect:/cards/all"
     }
 
     @GetMapping("/all")

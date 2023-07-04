@@ -6,19 +6,24 @@
     <link rel="stylesheet" href="/styles/style.css">
 </head>
 <body>
-<div th:include="fragments/navbar::navbar"></div>
-<main>
-    <form th:action="@{/cards/addMenuToCard}" th:object="${menu}" method="post" class="form">
-        <label class="form_label">
-            <select th:field="*{id}" class="form_input">
-                <option th:each="menu : ${allMenus}" th:value="${menu.id}" th:text="${menu.name}">Menu</option>
-            </select>
-        </label>
-        <input class="form_input" type="text" th:field="*{name}" placeholder="Ou entrez un nouveau nom de menu..."/>
-        <input type="hidden" name="cardId" th:value="${card.id}">
-        <input class="btn" type="submit" value="Ajouter le menu à la carte">
-    </form>
-</main>
-<div th:include="fragments/footer::footer"></div>
+<div id="page-container">
+    <div id="content-wrap">
+        <div th:include="fragments/navbar::navbar"></div>
+        <main>
+            <form th:action="@{/cards/addMenuToCard}" th:object="${menu}" method="post" class="form">
+                <label class="form_label">
+                    <select th:field="*{id}" class="form_input">
+                        <option th:each="menu : ${allMenus}" th:value="${menu.id}" th:text="${menu.name}">Menu</option>
+                    </select>
+                </label>
+                <input class="form_input" type="text" th:field="*{name}"
+                       placeholder="Ou entrez un nouveau nom de menu..."/>
+                <input type="hidden" name="cardId" th:value="${card.id}">
+                <input class="btn" type="submit" value="Ajouter le menu à la carte">
+            </form>
+        </main>
+    </div>
+    <div th:include="fragments/footer::footer" id="footer"></div>
+</div>
 </body>
 </html>

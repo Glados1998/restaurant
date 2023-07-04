@@ -40,7 +40,14 @@ class DishController(
     @GetMapping("edit/{id}")
     fun editDishForm(@PathVariable id: Long, model: Model): String {
         val dish = dishService.findById(id)
+        val allMenus = menuService.findAll()
+        val allCards = cardService.findAll()
+        val allAllergies = allergiesService.findAll()
         model.addAttribute("dish", dish)
+        model.addAttribute("allAllergies", allAllergies)
+        model.addAttribute("menus", allMenus)
+        model.addAttribute("cards", allCards)
+        model.addAttribute("allAllergies", allAllergies)
         return "admin/add-edit-dish"
     }
 
